@@ -33,7 +33,8 @@ class UnityEnvironment(BaseUnityEnvironment):
                  seed: int = 0,
                  docker_training: bool = False,
                  no_graphics: bool = False,
-                 timeout_wait: int = 30):
+                 timeout_wait: int = 30,
+                 sim_args: dict = None):
         """
         Starts a new unity environment and establishes a connection with the environment.
         Notice: Currently communication between Unity and Python takes place over an open socket without authentication.
@@ -46,6 +47,7 @@ class UnityEnvironment(BaseUnityEnvironment):
         :bool no_graphics: Whether to run the Unity simulator in no-graphics mode
         :int timeout_wait: Time (in seconds) to wait for connection from environment.
         :bool train_mode: Whether to run in training mode, speeding up the simulation, by default.
+        :dict sim_args: Dict of command line args to pass to executable (dashes will be prefixed to keys)
         """
 
         atexit.register(self._close)
@@ -64,7 +66,7 @@ class UnityEnvironment(BaseUnityEnvironment):
                 "If the environment name is None, "
                 "the worker-id must be 0 in order to connect with the Editor.")
         if file_name is not None:
-            self.executable_launcher(file_name, docker_training, no_graphics)
+            self.executable_launcher(file_name, docker_training, no_graphics, sim_args)
         else:
             logger.info("Start training by pressing the Play button in the Unity Editor.")
         self._loaded = True
@@ -152,7 +154,7 @@ class UnityEnvironment(BaseUnityEnvironment):
     def reset_parameters(self):
         return self._resetParameters
 
-    def executable_launcher(self, file_name, docker_training, no_graphics):
+    def executable_launcher(self, file_name, docker_training, no_graphics, sim_args):
         cwd = os.getcwd()
         file_name = (file_name.strip()
                      .replace('.app', '').replace('.exe', '').replace('.x86_64', '').replace('.x86',
@@ -196,16 +198,20 @@ class UnityEnvironment(BaseUnityEnvironment):
                                             "Provided filename does not match any environments."
                                             .format(true_filename))
         else:
+            cmd = [launch_string, '--port', str(self.port)]
+
+            # add in custom command-line args
+            if sim_args:
+                for k, v in sim_args.items():
+                    cmd += [f"--{k}", str(v)]
+
             logger.debug("This is the launch string {}".format(launch_string))
             # Launch Unity environment
             if not docker_training:
                 if no_graphics:
-                    self.proc1 = subprocess.Popen(
-                        [launch_string, '-nographics', '-batchmode',
-                         '--port', str(self.port)])
-                else:
-                    self.proc1 = subprocess.Popen(
-                        [launch_string, '--port', str(self.port)])
+                    cmd += ['-nographics', '-batchmode']
+
+                self.proc1 = subprocess.Popen(cmd)
             else:
                 """
                 Comments for future maintenance:
@@ -225,8 +231,7 @@ class UnityEnvironment(BaseUnityEnvironment):
                     we created with `xvfb`.
                 """
                 docker_ls = ("exec xvfb-run --auto-servernum"
-                             " --server-args='-screen 0 640x480x24'"
-                             " {0} --port {1}").format(launch_string, str(self.port))
+                             f" --server-args='-screen 0 640x480x24' {' '.join(cmd)}")
                 self.proc1 = subprocess.Popen(docker_ls,
                                               stdout=subprocess.PIPE,
                                               stderr=subprocess.PIPE,
@@ -461,7 +466,8 @@ class UnityEnvironment(BaseUnityEnvironment):
 
     def _close(self):
         self._loaded = False
-        self.communicator.close()
+        if hasattr(self, "communicator"):
+            self.communicator.close()
         if self.proc1 is not None:
             self.proc1.kill()
 
