@@ -34,7 +34,8 @@ class UnityEnvironment(BaseUnityEnvironment):
                  docker_training: bool = False,
                  no_graphics: bool = False,
                  timeout_wait: int = 30,
-                 sim_args: dict = None):
+                 sim_args: dict = None,
+                 log_file: str = None):
         """
         Starts a new unity environment and establishes a connection with the environment.
         Notice: Currently communication between Unity and Python takes place over an open socket without authentication.
@@ -48,6 +49,7 @@ class UnityEnvironment(BaseUnityEnvironment):
         :int timeout_wait: Time (in seconds) to wait for connection from environment.
         :bool train_mode: Whether to run in training mode, speeding up the simulation, by default.
         :dict sim_args: Dict of command line args to pass to executable (dashes will be prefixed to keys)
+        :str log_file: Path of log file for Unity executable.
         """
 
         atexit.register(self._close)
@@ -66,7 +68,7 @@ class UnityEnvironment(BaseUnityEnvironment):
                 "If the environment name is None, "
                 "the worker-id must be 0 in order to connect with the Editor.")
         if file_name is not None:
-            self.executable_launcher(file_name, docker_training, no_graphics, sim_args)
+            self.executable_launcher(file_name, docker_training, no_graphics, sim_args, log_file)
         else:
             logger.info("Start training by pressing the Play button in the Unity Editor.")
         self._loaded = True
@@ -154,7 +156,7 @@ class UnityEnvironment(BaseUnityEnvironment):
     def reset_parameters(self):
         return self._resetParameters
 
-    def executable_launcher(self, file_name, docker_training, no_graphics, sim_args):
+    def executable_launcher(self, file_name, docker_training, no_graphics, sim_args, log_file):
         cwd = os.getcwd()
         file_name = (file_name.strip()
                      .replace('.app', '').replace('.exe', '').replace('.x86_64', '').replace('.x86',
@@ -205,12 +207,17 @@ class UnityEnvironment(BaseUnityEnvironment):
                 for k, v in sim_args.items():
                     cmd += [f"--{k}", str(v)]
 
-            logger.debug("This is the launch string {}".format(launch_string))
+            # custom log file location
+            if log_file:
+                cmd += ['-logFile', log_file]
+
             # Launch Unity environment
             if not docker_training:
                 if no_graphics:
                     cmd += ['-nographics', '-batchmode']
 
+                logger.info(f"This is the launch string {' '.join(cmd)}")
+                logger.info(f"Current working dir: {os.getcwd()}")
                 self.proc1 = subprocess.Popen(cmd)
             else:
                 """
@@ -232,6 +239,7 @@ class UnityEnvironment(BaseUnityEnvironment):
                 """
                 docker_ls = ("exec xvfb-run --auto-servernum"
                              f" --server-args='-screen 0 640x480x24' {' '.join(cmd)}")
+                logger.info(f"This is the launch string {docker_ls}")
                 self.proc1 = subprocess.Popen(docker_ls,
                                               stdout=subprocess.PIPE,
                                               stderr=subprocess.PIPE,
