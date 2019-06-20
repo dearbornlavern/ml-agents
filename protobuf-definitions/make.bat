@@ -1,8 +1,10 @@
 # variables
 
 # GRPC-TOOLS required. Install with `nuget install Grpc.Tools`. 
-# Then export env GRPC_TOOLS with location of files.
-COMPILER=${GRPC_TOOLS}
+# Then un-comment and replace [DIRECTORY] with location of files.
+# For example, on macOS, you might have something like:
+# COMPILER=Grpc.Tools.1.14.1/tools/macosx_x64
+# COMPILER=[DIRECTORY]
 
 SRC_DIR=proto/mlagents/envs/communicator_objects
 DST_DIR_C=../UnitySDK/Assets/ML-Agents/Scripts/CommunicatorObjects

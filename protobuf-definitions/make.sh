@@ -3,12 +3,13 @@
 # variables
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+GRPC_VERSION="1.14.1"
 
-# GRPC-TOOLS required. Install with `nuget install Grpc.Tools`. 
+# GRPC-TOOLS required. Install with "nuget install Grpc.Tools -Version $GRPC_VERSION".
 # Then export env GRPC_TOOLS with location of files.
 if [ -z "$GRPC_TOOLS" ]
 then
-    echo "Must set env var GRPC_TOOLS to path of Grpc.Tools (install via nuget)."
+    echo "Must set env var GRPC_TOOLS to path of Grpc.Tools (nuget install Grpc.Tools -Version $GRPC_VERSION)."
     exit 1
 fi
 COMPILER=${GRPC_TOOLS}
