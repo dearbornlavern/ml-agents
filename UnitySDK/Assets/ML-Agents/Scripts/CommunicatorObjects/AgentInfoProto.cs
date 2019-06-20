@@ -377,7 +377,7 @@ namespace MLAgents.CommunicatorObjects {
       actionMask_.Add(other.actionMask_);
       if (other.customObservation_ != null) {
         if (customObservation_ == null) {
-          CustomObservation = new global::MLAgents.CommunicatorObjects.CustomObservation();
+          customObservation_ = new global::MLAgents.CommunicatorObjects.CustomObservation();
         }
         CustomObservation.MergeFrom(other.CustomObservation);
       }
@@ -442,9 +442,9 @@ namespace MLAgents.CommunicatorObjects {
           }
           case 98: {
             if (customObservation_ == null) {
-              CustomObservation = new global::MLAgents.CommunicatorObjects.CustomObservation();
+              customObservation_ = new global::MLAgents.CommunicatorObjects.CustomObservation();
             }
-            input.ReadMessage(CustomObservation);
+            input.ReadMessage(customObservation_);
             break;
           }
         }

@@ -194,19 +194,19 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (other.header_ != null) {
         if (header_ == null) {
-          Header = new global::MLAgents.CommunicatorObjects.Header();
+          header_ = new global::MLAgents.CommunicatorObjects.Header();
         }
         Header.MergeFrom(other.Header);
       }
       if (other.unityOutput_ != null) {
         if (unityOutput_ == null) {
-          UnityOutput = new global::MLAgents.CommunicatorObjects.UnityOutput();
+          unityOutput_ = new global::MLAgents.CommunicatorObjects.UnityOutput();
         }
         UnityOutput.MergeFrom(other.UnityOutput);
       }
       if (other.unityInput_ != null) {
         if (unityInput_ == null) {
-          UnityInput = new global::MLAgents.CommunicatorObjects.UnityInput();
+          unityInput_ = new global::MLAgents.CommunicatorObjects.UnityInput();
         }
         UnityInput.MergeFrom(other.UnityInput);
       }
@@ -223,23 +223,23 @@ namespace MLAgents.CommunicatorObjects {
             break;
           case 10: {
             if (header_ == null) {
-              Header = new global::MLAgents.CommunicatorObjects.Header();
+              header_ = new global::MLAgents.CommunicatorObjects.Header();
             }
-            input.ReadMessage(Header);
+            input.ReadMessage(header_);
             break;
           }
           case 18: {
             if (unityOutput_ == null) {
-              UnityOutput = new global::MLAgents.CommunicatorObjects.UnityOutput();
+              unityOutput_ = new global::MLAgents.CommunicatorObjects.UnityOutput();
             }
-            input.ReadMessage(UnityOutput);
+            input.ReadMessage(unityOutput_);
             break;
           }
           case 26: {
             if (unityInput_ == null) {
-              UnityInput = new global::MLAgents.CommunicatorObjects.UnityInput();
+              unityInput_ = new global::MLAgents.CommunicatorObjects.UnityInput();
             }
-            input.ReadMessage(UnityInput);
+            input.ReadMessage(unityInput_);
             break;
           }
         }

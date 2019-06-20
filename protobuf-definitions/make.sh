@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # variables
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -11,9 +13,6 @@ then
 fi
 COMPILER=${GRPC_TOOLS}
 
-# SRC_DIR=proto/mlagents/envs/communicator_objects
-# DST_DIR_C=../UnitySDK/Assets/ML-Agents/Scripts/CommunicatorObjects
-# DST_DIR_P=../ml-agents-envs
 SRC_DIR=$DIR/proto/mlagents/envs/communicator_objects
 DST_DIR_C=$DIR/../UnitySDK/Assets/ML-Agents/Scripts/CommunicatorObjects
 DST_DIR_P=$DIR/../ml-agents-envs

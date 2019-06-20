@@ -35,7 +35,7 @@ setup(
         'matplotlib',
         'numpy>=1.13.3,<=1.14.5',
         'jupyter',
-        'pytest>=3.2.2,<4.0.0',
+        'pytest>=3.2.2,<=4.5.0',
         'docopt',
         'pyyaml',
         'protobuf>=3.6,<3.7',

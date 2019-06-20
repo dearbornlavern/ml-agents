@@ -229,7 +229,7 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (other.customAction_ != null) {
         if (customAction_ == null) {
-          CustomAction = new global::MLAgents.CommunicatorObjects.CustomAction();
+          customAction_ = new global::MLAgents.CommunicatorObjects.CustomAction();
         }
         CustomAction.MergeFrom(other.CustomAction);
       }
@@ -264,9 +264,9 @@ namespace MLAgents.CommunicatorObjects {
           }
           case 42: {
             if (customAction_ == null) {
-              CustomAction = new global::MLAgents.CommunicatorObjects.CustomAction();
+              customAction_ = new global::MLAgents.CommunicatorObjects.CustomAction();
             }
-            input.ReadMessage(CustomAction);
+            input.ReadMessage(customAction_);
             break;
           }
         }
