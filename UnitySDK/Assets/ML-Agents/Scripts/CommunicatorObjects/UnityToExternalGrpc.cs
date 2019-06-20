@@ -28,7 +28,6 @@ namespace MLAgents.CommunicatorObjects {
     }
 
     /// <summary>Base class for server-side implementations of UnityToExternal</summary>
-    [grpc::BindServiceMethod(typeof(UnityToExternal), "BindService")]
     public abstract partial class UnityToExternalBase
     {
       /// <summary>
@@ -124,15 +123,6 @@ namespace MLAgents.CommunicatorObjects {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Exchange, serviceImpl.Exchange).Build();
-    }
-
-    /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
-    /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
-    /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
-    /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, UnityToExternalBase serviceImpl)
-    {
-      serviceBinder.AddMethod(__Method_Exchange, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MLAgents.CommunicatorObjects.UnityMessage, global::MLAgents.CommunicatorObjects.UnityMessage>(serviceImpl.Exchange));
     }
 
   }
