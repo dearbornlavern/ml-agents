@@ -205,7 +205,10 @@ class UnityEnvironment(BaseUnityEnvironment):
             # add in custom command-line args
             if sim_args:
                 for k, v in sim_args.items():
-                    cmd += [f"--{k}", str(v)]
+                    if v is True:
+                        cmd += [f"--{k}"]
+                    else:
+                        cmd += [f"--{k}", str(v)]
 
             # custom log file location
             if log_file:
