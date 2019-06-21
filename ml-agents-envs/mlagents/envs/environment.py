@@ -34,8 +34,11 @@ class UnityEnvironment(BaseUnityEnvironment):
                  docker_training: bool = False,
                  no_graphics: bool = False,
                  timeout_wait: int = 30,
+                 train_mode: bool = False,
                  sim_args: dict = None,
-                 log_file: str = None):
+                 log_file: str = None,
+                 horizon: int = 250,
+                 substeps: int = 1):
         """
         Starts a new unity environment and establishes a connection with the environment.
         Notice: Currently communication between Unity and Python takes place over an open socket without authentication.
@@ -54,6 +57,7 @@ class UnityEnvironment(BaseUnityEnvironment):
 
         atexit.register(self._close)
         self.port = base_port + worker_id
+        self.train_mode = train_mode
         self._buffer_size = 12000
         self._version_ = "API-8"
         self._loaded = False  # If true, this means the environment was successfully loaded
@@ -74,7 +78,9 @@ class UnityEnvironment(BaseUnityEnvironment):
         self._loaded = True
 
         rl_init_parameters_in = UnityRLInitializationInput(
-            seed=seed
+            seed=seed,
+            horizon=horizon,
+            substeps=substeps,
         )
         try:
             aca_params = self.send_academy_parameters(rl_init_parameters_in)
@@ -207,6 +213,8 @@ class UnityEnvironment(BaseUnityEnvironment):
                 for k, v in sim_args.items():
                     if v is True:
                         cmd += [f"--{k}"]
+                    elif v is False:
+                        pass
                     else:
                         cmd += [f"--{k}", str(v)]
 
@@ -259,7 +267,7 @@ class UnityEnvironment(BaseUnityEnvironment):
                                                    for k in self._resetParameters])) + '\n' + \
                '\n'.join([str(self._brains[b]) for b in self._brains])
 
-    def reset(self, config=None, train_mode=True, custom_reset_parameters=None) -> AllBrainInfo:
+    def reset(self, config=None, custom_reset_parameters=None) -> AllBrainInfo:
         """
         Sends a signal to reset the unity environment.
         :return: AllBrainInfo  : A data structure corresponding to the initial reset state of the environment.
@@ -281,7 +289,7 @@ class UnityEnvironment(BaseUnityEnvironment):
 
         if self._loaded:
             outputs = self.communicator.exchange(
-                self._generate_reset_input(train_mode, config, custom_reset_parameters)
+                self._generate_reset_input(self.train_mode, config, custom_reset_parameters)
             )
             if outputs is None:
                 raise KeyboardInterrupt

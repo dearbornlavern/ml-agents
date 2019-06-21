@@ -26,12 +26,13 @@ namespace MLAgents.CommunicatorObjects {
           string.Concat(
             "CkZtbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL3VuaXR5X3Js",
             "X2luaXRpYWxpemF0aW9uX2lucHV0LnByb3RvEhRjb21tdW5pY2F0b3Jfb2Jq",
-            "ZWN0cyIqChpVbml0eVJMSW5pdGlhbGl6YXRpb25JbnB1dBIMCgRzZWVkGAEg",
-            "ASgFQh+qAhxNTEFnZW50cy5Db21tdW5pY2F0b3JPYmplY3RzYgZwcm90bzM="));
+            "ZWN0cyJNChpVbml0eVJMSW5pdGlhbGl6YXRpb25JbnB1dBIMCgRzZWVkGAEg",
+            "ASgFEg8KB2hvcml6b24YAiABKAUSEAoIc3Vic3RlcHMYAyABKAVCH6oCHE1M",
+            "QWdlbnRzLkNvbW11bmljYXRvck9iamVjdHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityRLInitializationInput), global::MLAgents.CommunicatorObjects.UnityRLInitializationInput.Parser, new[]{ "Seed" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityRLInitializationInput), global::MLAgents.CommunicatorObjects.UnityRLInitializationInput.Parser, new[]{ "Seed", "Horizon", "Substeps" }, null, null, null)
           }));
     }
     #endregion
@@ -64,6 +65,8 @@ namespace MLAgents.CommunicatorObjects {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public UnityRLInitializationInput(UnityRLInitializationInput other) : this() {
       seed_ = other.seed_;
+      horizon_ = other.horizon_;
+      substeps_ = other.substeps_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,6 +86,28 @@ namespace MLAgents.CommunicatorObjects {
       }
     }
 
+    /// <summary>Field number for the "horizon" field.</summary>
+    public const int HorizonFieldNumber = 2;
+    private int horizon_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Horizon {
+      get { return horizon_; }
+      set {
+        horizon_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "substeps" field.</summary>
+    public const int SubstepsFieldNumber = 3;
+    private int substeps_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Substeps {
+      get { return substeps_; }
+      set {
+        substeps_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UnityRLInitializationInput);
@@ -97,6 +122,8 @@ namespace MLAgents.CommunicatorObjects {
         return true;
       }
       if (Seed != other.Seed) return false;
+      if (Horizon != other.Horizon) return false;
+      if (Substeps != other.Substeps) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -104,6 +131,8 @@ namespace MLAgents.CommunicatorObjects {
     public override int GetHashCode() {
       int hash = 1;
       if (Seed != 0) hash ^= Seed.GetHashCode();
+      if (Horizon != 0) hash ^= Horizon.GetHashCode();
+      if (Substeps != 0) hash ^= Substeps.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -121,6 +150,14 @@ namespace MLAgents.CommunicatorObjects {
         output.WriteRawTag(8);
         output.WriteInt32(Seed);
       }
+      if (Horizon != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Horizon);
+      }
+      if (Substeps != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Substeps);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -131,6 +168,12 @@ namespace MLAgents.CommunicatorObjects {
       int size = 0;
       if (Seed != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seed);
+      }
+      if (Horizon != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Horizon);
+      }
+      if (Substeps != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Substeps);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -146,6 +189,12 @@ namespace MLAgents.CommunicatorObjects {
       if (other.Seed != 0) {
         Seed = other.Seed;
       }
+      if (other.Horizon != 0) {
+        Horizon = other.Horizon;
+      }
+      if (other.Substeps != 0) {
+        Substeps = other.Substeps;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -159,6 +208,14 @@ namespace MLAgents.CommunicatorObjects {
             break;
           case 8: {
             Seed = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Horizon = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Substeps = input.ReadInt32();
             break;
           }
         }
