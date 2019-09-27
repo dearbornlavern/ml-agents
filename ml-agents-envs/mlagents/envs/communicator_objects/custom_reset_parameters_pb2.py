@@ -19,11 +19,48 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='communicator_objects',
   syntax='proto3',
   serialized_options=_b('\252\002\034MLAgents.CommunicatorObjects'),
-  serialized_pb=_b('\n@mlagents/envs/communicator_objects/custom_reset_parameters.proto\x12\x14\x63ommunicator_objects\"\x17\n\x15\x43ustomResetParametersB\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
+  serialized_pb=_b('\n@mlagents/envs/communicator_objects/custom_reset_parameters.proto\x12\x14\x63ommunicator_objects\"\x9b\x01\n\x15\x43ustomResetParameters\x12O\n\nproperties\x18\x01 \x03(\x0b\x32;.communicator_objects.CustomResetParameters.PropertiesEntry\x1a\x31\n\x0fPropertiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
 )
 
 
 
+
+_CUSTOMRESETPARAMETERS_PROPERTIESENTRY = _descriptor.Descriptor(
+  name='PropertiesEntry',
+  full_name='communicator_objects.CustomResetParameters.PropertiesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='communicator_objects.CustomResetParameters.PropertiesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='communicator_objects.CustomResetParameters.PropertiesEntry.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=197,
+  serialized_end=246,
+)
 
 _CUSTOMRESETPARAMETERS = _descriptor.Descriptor(
   name='CustomResetParameters',
@@ -32,10 +69,17 @@ _CUSTOMRESETPARAMETERS = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='properties', full_name='communicator_objects.CustomResetParameters.properties', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[],
+  nested_types=[_CUSTOMRESETPARAMETERS_PROPERTIESENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -44,20 +88,31 @@ _CUSTOMRESETPARAMETERS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=90,
-  serialized_end=113,
+  serialized_start=91,
+  serialized_end=246,
 )
 
+_CUSTOMRESETPARAMETERS_PROPERTIESENTRY.containing_type = _CUSTOMRESETPARAMETERS
+_CUSTOMRESETPARAMETERS.fields_by_name['properties'].message_type = _CUSTOMRESETPARAMETERS_PROPERTIESENTRY
 DESCRIPTOR.message_types_by_name['CustomResetParameters'] = _CUSTOMRESETPARAMETERS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CustomResetParameters = _reflection.GeneratedProtocolMessageType('CustomResetParameters', (_message.Message,), dict(
+
+  PropertiesEntry = _reflection.GeneratedProtocolMessageType('PropertiesEntry', (_message.Message,), dict(
+    DESCRIPTOR = _CUSTOMRESETPARAMETERS_PROPERTIESENTRY,
+    __module__ = 'mlagents.envs.communicator_objects.custom_reset_parameters_pb2'
+    # @@protoc_insertion_point(class_scope:communicator_objects.CustomResetParameters.PropertiesEntry)
+    ))
+  ,
   DESCRIPTOR = _CUSTOMRESETPARAMETERS,
   __module__ = 'mlagents.envs.communicator_objects.custom_reset_parameters_pb2'
   # @@protoc_insertion_point(class_scope:communicator_objects.CustomResetParameters)
   ))
 _sym_db.RegisterMessage(CustomResetParameters)
+_sym_db.RegisterMessage(CustomResetParameters.PropertiesEntry)
 
 
 DESCRIPTOR._options = None
+_CUSTOMRESETPARAMETERS_PROPERTIESENTRY._options = None
 # @@protoc_insertion_point(module_scope)

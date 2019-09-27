@@ -4,4 +4,5 @@ option csharp_namespace = "MLAgents.CommunicatorObjects";
 package communicator_objects;
 
 message CustomResetParameters {
+    map<string, string> properties = 1;
 }

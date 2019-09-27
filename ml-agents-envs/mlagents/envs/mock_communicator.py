@@ -38,7 +38,8 @@ class MockCommunicator(Communicator):
             vector_action_descriptions=["", ""],
             vector_action_space_type=int(not self.is_discrete),
             brain_name=self.brain_name,
-            is_training=True
+            is_training=True,
+            vector_observation_descriptions=[""] * self.vec_obs_size,
         )
         rl_init = UnityRLInitializationOutput(
             name="RealFakeAcademy",

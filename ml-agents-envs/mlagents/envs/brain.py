@@ -172,6 +172,7 @@ class BrainParameters:
                  vector_observation_space_size: int,
                  num_stacked_vector_observations: int,
                  camera_resolutions: List[Dict],
+                 vector_observation_descriptions: List[str],
                  vector_action_space_size: List[int],
                  vector_action_descriptions: List[str],
                  vector_action_space_type: int):
@@ -183,6 +184,7 @@ class BrainParameters:
         self.num_stacked_vector_observations = num_stacked_vector_observations
         self.number_visual_observations = len(camera_resolutions)
         self.camera_resolutions = camera_resolutions
+        self.vector_observation_descriptions = vector_observation_descriptions
         self.vector_action_space_size = vector_action_space_size
         self.vector_action_descriptions = vector_action_descriptions
         self.vector_action_space_type = ["discrete", "continuous"][vector_action_space_type]
@@ -194,13 +196,15 @@ class BrainParameters:
         Number of stacked Vector Observation: {}
         Vector Action space type: {}
         Vector Action space size (per agent): {}
-        Vector Action descriptions: {}'''.format(self.brain_name,
-                                                 str(self.number_visual_observations),
-                                                 str(self.vector_observation_space_size),
-                                                 str(self.num_stacked_vector_observations),
-                                                 self.vector_action_space_type,
-                                                 str(self.vector_action_space_size),
-                                                 ', '.join(self.vector_action_descriptions))
+        Vector Action descriptions: {}
+        Vector Observation descriptions: {}'''.format(self.brain_name,
+                                                      str(self.number_visual_observations),
+                                                      str(self.vector_observation_space_size),
+                                                      str(self.num_stacked_vector_observations),
+                                                      self.vector_action_space_type,
+                                                      str(self.vector_action_space_size),
+                                                      ', '.join(self.vector_action_descriptions),
+                                                      ', '.join(self.vector_observation_descriptions))
 
     @staticmethod
     def from_proto(brain_param_proto):
@@ -218,6 +222,7 @@ class BrainParameters:
                                        brain_param_proto.vector_observation_size,
                                        brain_param_proto.num_stacked_vector_observations,
                                        resolution,
+                                       list(brain_param_proto.vector_observation_descriptions),
                                        list(brain_param_proto.vector_action_size),
                                        list(brain_param_proto.vector_action_descriptions),
                                        brain_param_proto.vector_action_space_type)

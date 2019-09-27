@@ -15,4 +15,5 @@ message BrainParametersProto {
     SpaceTypeProto vector_action_space_type = 6;
     string brain_name = 7;
     bool is_training = 8;
+    repeated string vector_observation_descriptions = 9;
 }

@@ -105,6 +105,7 @@ class UnityEnv(gym.Env):
                                                         depth))
         else:
             self._observation_space = spaces.Box(-high, high, dtype=np.float32)
+        self.observation_meanings = brain.vector_observation_descriptions
 
     def reset(self):
         """Resets the state of the environment and returns an initial observation.

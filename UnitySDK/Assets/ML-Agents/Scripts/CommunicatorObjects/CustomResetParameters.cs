@@ -25,13 +25,16 @@ namespace MLAgents.CommunicatorObjects {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CkBtbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL2N1c3RvbV9y",
-            "ZXNldF9wYXJhbWV0ZXJzLnByb3RvEhRjb21tdW5pY2F0b3Jfb2JqZWN0cyIX",
-            "ChVDdXN0b21SZXNldFBhcmFtZXRlcnNCH6oCHE1MQWdlbnRzLkNvbW11bmlj",
-            "YXRvck9iamVjdHNiBnByb3RvMw=="));
+            "ZXNldF9wYXJhbWV0ZXJzLnByb3RvEhRjb21tdW5pY2F0b3Jfb2JqZWN0cyKb",
+            "AQoVQ3VzdG9tUmVzZXRQYXJhbWV0ZXJzEk8KCnByb3BlcnRpZXMYASADKAsy",
+            "Oy5jb21tdW5pY2F0b3Jfb2JqZWN0cy5DdXN0b21SZXNldFBhcmFtZXRlcnMu",
+            "UHJvcGVydGllc0VudHJ5GjEKD1Byb3BlcnRpZXNFbnRyeRILCgNrZXkYASAB",
+            "KAkSDQoFdmFsdWUYAiABKAk6AjgBQh+qAhxNTEFnZW50cy5Db21tdW5pY2F0",
+            "b3JPYmplY3RzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.CustomResetParameters), global::MLAgents.CommunicatorObjects.CustomResetParameters.Parser, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.CustomResetParameters), global::MLAgents.CommunicatorObjects.CustomResetParameters.Parser, new[]{ "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -63,12 +66,23 @@ namespace MLAgents.CommunicatorObjects {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CustomResetParameters(CustomResetParameters other) : this() {
+      properties_ = other.properties_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CustomResetParameters Clone() {
       return new CustomResetParameters(this);
+    }
+
+    /// <summary>Field number for the "properties" field.</summary>
+    public const int PropertiesFieldNumber = 1;
+    private static readonly pbc::MapField<string, string>.Codec _map_properties_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 10);
+    private readonly pbc::MapField<string, string> properties_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, string> Properties {
+      get { return properties_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -84,12 +98,14 @@ namespace MLAgents.CommunicatorObjects {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!Properties.Equals(other.Properties)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= Properties.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -103,6 +119,7 @@ namespace MLAgents.CommunicatorObjects {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      properties_.WriteTo(output, _map_properties_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -111,6 +128,7 @@ namespace MLAgents.CommunicatorObjects {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      size += properties_.CalculateSize(_map_properties_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -122,6 +140,7 @@ namespace MLAgents.CommunicatorObjects {
       if (other == null) {
         return;
       }
+      properties_.Add(other.properties_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -133,6 +152,10 @@ namespace MLAgents.CommunicatorObjects {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10: {
+            properties_.AddEntriesFrom(input, _map_properties_codec);
+            break;
+          }
         }
       }
     }
