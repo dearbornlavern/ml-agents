@@ -169,6 +169,7 @@ AllBrainInfo = Dict[str, BrainInfo]
 class BrainParameters:
     def __init__(self,
                  brain_name: str,
+                 agent_names: List[str],
                  vector_observation_space_size: int,
                  num_stacked_vector_observations: int,
                  camera_resolutions: List[Dict],
@@ -180,6 +181,7 @@ class BrainParameters:
         Contains all brain-specific parameters.
         """
         self.brain_name = brain_name
+        self.agent_names = agent_names
         self.vector_observation_space_size = vector_observation_space_size
         self.num_stacked_vector_observations = num_stacked_vector_observations
         self.number_visual_observations = len(camera_resolutions)
@@ -191,6 +193,7 @@ class BrainParameters:
 
     def __str__(self):
         return '''Unity brain name: {}
+        Agent names: {}
         Number of Visual Observations (per agent): {}
         Vector Observation space size (per agent): {}
         Number of stacked Vector Observation: {}
@@ -198,6 +201,7 @@ class BrainParameters:
         Vector Action space size (per agent): {}
         Vector Action descriptions: {}
         Vector Observation descriptions: {}'''.format(self.brain_name,
+                                                      ', '.join(self.agent_names),
                                                       str(self.number_visual_observations),
                                                       str(self.vector_observation_space_size),
                                                       str(self.num_stacked_vector_observations),
@@ -219,6 +223,7 @@ class BrainParameters:
             "blackAndWhite": x.gray_scale
         } for x in brain_param_proto.camera_resolutions]
         brain_params = BrainParameters(brain_param_proto.brain_name,
+                                       brain_param_proto.agent_names,
                                        brain_param_proto.vector_observation_size,
                                        brain_param_proto.num_stacked_vector_observations,
                                        resolution,
