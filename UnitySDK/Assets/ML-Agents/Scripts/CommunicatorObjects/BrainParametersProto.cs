@@ -28,20 +28,21 @@ namespace MLAgents.CommunicatorObjects {
             "cmFtZXRlcnNfcHJvdG8ucHJvdG8SFGNvbW11bmljYXRvcl9vYmplY3RzGjlt",
             "bGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL3Jlc29sdXRpb25f",
             "cHJvdG8ucHJvdG8aOW1sYWdlbnRzL2VudnMvY29tbXVuaWNhdG9yX29iamVj",
-            "dHMvc3BhY2VfdHlwZV9wcm90by5wcm90byL9AgoUQnJhaW5QYXJhbWV0ZXJz",
+            "dHMvc3BhY2VfdHlwZV9wcm90by5wcm90byKSAwoUQnJhaW5QYXJhbWV0ZXJz",
             "UHJvdG8SHwoXdmVjdG9yX29ic2VydmF0aW9uX3NpemUYASABKAUSJwofbnVt",
-            "X3N0YWNrZWRfdmVjdG9yX29ic2VydmF0aW9ucxgCIAEoBRIaChJ2ZWN0b3Jf",
-            "YWN0aW9uX3NpemUYAyADKAUSQQoSY2FtZXJhX3Jlc29sdXRpb25zGAQgAygL",
-            "MiUuY29tbXVuaWNhdG9yX29iamVjdHMuUmVzb2x1dGlvblByb3RvEiIKGnZl",
-            "Y3Rvcl9hY3Rpb25fZGVzY3JpcHRpb25zGAUgAygJEkYKGHZlY3Rvcl9hY3Rp",
-            "b25fc3BhY2VfdHlwZRgGIAEoDjIkLmNvbW11bmljYXRvcl9vYmplY3RzLlNw",
-            "YWNlVHlwZVByb3RvEhIKCmJyYWluX25hbWUYByABKAkSEwoLaXNfdHJhaW5p",
-            "bmcYCCABKAgSJwofdmVjdG9yX29ic2VydmF0aW9uX2Rlc2NyaXB0aW9ucxgJ",
-            "IAMoCUIfqgIcTUxBZ2VudHMuQ29tbXVuaWNhdG9yT2JqZWN0c2IGcHJvdG8z"));
+            "X3N0YWNrZWRfdmVjdG9yX29ic2VydmF0aW9ucxgCIAEoBRInCh92ZWN0b3Jf",
+            "b2JzZXJ2YXRpb25fZGVzY3JpcHRpb25zGAMgAygJEhoKEnZlY3Rvcl9hY3Rp",
+            "b25fc2l6ZRgEIAMoBRJBChJjYW1lcmFfcmVzb2x1dGlvbnMYBSADKAsyJS5j",
+            "b21tdW5pY2F0b3Jfb2JqZWN0cy5SZXNvbHV0aW9uUHJvdG8SIgoadmVjdG9y",
+            "X2FjdGlvbl9kZXNjcmlwdGlvbnMYBiADKAkSRgoYdmVjdG9yX2FjdGlvbl9z",
+            "cGFjZV90eXBlGAcgASgOMiQuY29tbXVuaWNhdG9yX29iamVjdHMuU3BhY2VU",
+            "eXBlUHJvdG8SEgoKYnJhaW5fbmFtZRgIIAEoCRITCgtpc190cmFpbmluZxgJ",
+            "IAEoCBITCgthZ2VudF9uYW1lcxgKIAMoCUIfqgIcTUxBZ2VudHMuQ29tbXVu",
+            "aWNhdG9yT2JqZWN0c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MLAgents.CommunicatorObjects.ResolutionProtoReflection.Descriptor, global::MLAgents.CommunicatorObjects.SpaceTypeProtoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.BrainParametersProto), global::MLAgents.CommunicatorObjects.BrainParametersProto.Parser, new[]{ "VectorObservationSize", "NumStackedVectorObservations", "VectorActionSize", "CameraResolutions", "VectorActionDescriptions", "VectorActionSpaceType", "BrainName", "IsTraining", "VectorObservationDescriptions" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.BrainParametersProto), global::MLAgents.CommunicatorObjects.BrainParametersProto.Parser, new[]{ "VectorObservationSize", "NumStackedVectorObservations", "VectorObservationDescriptions", "VectorActionSize", "CameraResolutions", "VectorActionDescriptions", "VectorActionSpaceType", "BrainName", "IsTraining", "AgentNames" }, null, null, null)
           }));
     }
     #endregion
@@ -75,13 +76,14 @@ namespace MLAgents.CommunicatorObjects {
     public BrainParametersProto(BrainParametersProto other) : this() {
       vectorObservationSize_ = other.vectorObservationSize_;
       numStackedVectorObservations_ = other.numStackedVectorObservations_;
+      vectorObservationDescriptions_ = other.vectorObservationDescriptions_.Clone();
       vectorActionSize_ = other.vectorActionSize_.Clone();
       cameraResolutions_ = other.cameraResolutions_.Clone();
       vectorActionDescriptions_ = other.vectorActionDescriptions_.Clone();
       vectorActionSpaceType_ = other.vectorActionSpaceType_;
       brainName_ = other.brainName_;
       isTraining_ = other.isTraining_;
-      vectorObservationDescriptions_ = other.vectorObservationDescriptions_.Clone();
+      agentNames_ = other.agentNames_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -112,10 +114,20 @@ namespace MLAgents.CommunicatorObjects {
       }
     }
 
+    /// <summary>Field number for the "vector_observation_descriptions" field.</summary>
+    public const int VectorObservationDescriptionsFieldNumber = 3;
+    private static readonly pb::FieldCodec<string> _repeated_vectorObservationDescriptions_codec
+        = pb::FieldCodec.ForString(26);
+    private readonly pbc::RepeatedField<string> vectorObservationDescriptions_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> VectorObservationDescriptions {
+      get { return vectorObservationDescriptions_; }
+    }
+
     /// <summary>Field number for the "vector_action_size" field.</summary>
-    public const int VectorActionSizeFieldNumber = 3;
+    public const int VectorActionSizeFieldNumber = 4;
     private static readonly pb::FieldCodec<int> _repeated_vectorActionSize_codec
-        = pb::FieldCodec.ForInt32(26);
+        = pb::FieldCodec.ForInt32(34);
     private readonly pbc::RepeatedField<int> vectorActionSize_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<int> VectorActionSize {
@@ -123,9 +135,9 @@ namespace MLAgents.CommunicatorObjects {
     }
 
     /// <summary>Field number for the "camera_resolutions" field.</summary>
-    public const int CameraResolutionsFieldNumber = 4;
+    public const int CameraResolutionsFieldNumber = 5;
     private static readonly pb::FieldCodec<global::MLAgents.CommunicatorObjects.ResolutionProto> _repeated_cameraResolutions_codec
-        = pb::FieldCodec.ForMessage(34, global::MLAgents.CommunicatorObjects.ResolutionProto.Parser);
+        = pb::FieldCodec.ForMessage(42, global::MLAgents.CommunicatorObjects.ResolutionProto.Parser);
     private readonly pbc::RepeatedField<global::MLAgents.CommunicatorObjects.ResolutionProto> cameraResolutions_ = new pbc::RepeatedField<global::MLAgents.CommunicatorObjects.ResolutionProto>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::MLAgents.CommunicatorObjects.ResolutionProto> CameraResolutions {
@@ -133,9 +145,9 @@ namespace MLAgents.CommunicatorObjects {
     }
 
     /// <summary>Field number for the "vector_action_descriptions" field.</summary>
-    public const int VectorActionDescriptionsFieldNumber = 5;
+    public const int VectorActionDescriptionsFieldNumber = 6;
     private static readonly pb::FieldCodec<string> _repeated_vectorActionDescriptions_codec
-        = pb::FieldCodec.ForString(42);
+        = pb::FieldCodec.ForString(50);
     private readonly pbc::RepeatedField<string> vectorActionDescriptions_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<string> VectorActionDescriptions {
@@ -143,7 +155,7 @@ namespace MLAgents.CommunicatorObjects {
     }
 
     /// <summary>Field number for the "vector_action_space_type" field.</summary>
-    public const int VectorActionSpaceTypeFieldNumber = 6;
+    public const int VectorActionSpaceTypeFieldNumber = 7;
     private global::MLAgents.CommunicatorObjects.SpaceTypeProto vectorActionSpaceType_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::MLAgents.CommunicatorObjects.SpaceTypeProto VectorActionSpaceType {
@@ -154,7 +166,7 @@ namespace MLAgents.CommunicatorObjects {
     }
 
     /// <summary>Field number for the "brain_name" field.</summary>
-    public const int BrainNameFieldNumber = 7;
+    public const int BrainNameFieldNumber = 8;
     private string brainName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string BrainName {
@@ -165,7 +177,7 @@ namespace MLAgents.CommunicatorObjects {
     }
 
     /// <summary>Field number for the "is_training" field.</summary>
-    public const int IsTrainingFieldNumber = 8;
+    public const int IsTrainingFieldNumber = 9;
     private bool isTraining_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool IsTraining {
@@ -175,14 +187,14 @@ namespace MLAgents.CommunicatorObjects {
       }
     }
 
-    /// <summary>Field number for the "vector_observation_descriptions" field.</summary>
-    public const int VectorObservationDescriptionsFieldNumber = 9;
-    private static readonly pb::FieldCodec<string> _repeated_vectorObservationDescriptions_codec
-        = pb::FieldCodec.ForString(74);
-    private readonly pbc::RepeatedField<string> vectorObservationDescriptions_ = new pbc::RepeatedField<string>();
+    /// <summary>Field number for the "agent_names" field.</summary>
+    public const int AgentNamesFieldNumber = 10;
+    private static readonly pb::FieldCodec<string> _repeated_agentNames_codec
+        = pb::FieldCodec.ForString(82);
+    private readonly pbc::RepeatedField<string> agentNames_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<string> VectorObservationDescriptions {
-      get { return vectorObservationDescriptions_; }
+    public pbc::RepeatedField<string> AgentNames {
+      get { return agentNames_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -200,13 +212,14 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (VectorObservationSize != other.VectorObservationSize) return false;
       if (NumStackedVectorObservations != other.NumStackedVectorObservations) return false;
+      if(!vectorObservationDescriptions_.Equals(other.vectorObservationDescriptions_)) return false;
       if(!vectorActionSize_.Equals(other.vectorActionSize_)) return false;
       if(!cameraResolutions_.Equals(other.cameraResolutions_)) return false;
       if(!vectorActionDescriptions_.Equals(other.vectorActionDescriptions_)) return false;
       if (VectorActionSpaceType != other.VectorActionSpaceType) return false;
       if (BrainName != other.BrainName) return false;
       if (IsTraining != other.IsTraining) return false;
-      if(!vectorObservationDescriptions_.Equals(other.vectorObservationDescriptions_)) return false;
+      if(!agentNames_.Equals(other.agentNames_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -215,13 +228,14 @@ namespace MLAgents.CommunicatorObjects {
       int hash = 1;
       if (VectorObservationSize != 0) hash ^= VectorObservationSize.GetHashCode();
       if (NumStackedVectorObservations != 0) hash ^= NumStackedVectorObservations.GetHashCode();
+      hash ^= vectorObservationDescriptions_.GetHashCode();
       hash ^= vectorActionSize_.GetHashCode();
       hash ^= cameraResolutions_.GetHashCode();
       hash ^= vectorActionDescriptions_.GetHashCode();
       if (VectorActionSpaceType != 0) hash ^= VectorActionSpaceType.GetHashCode();
       if (BrainName.Length != 0) hash ^= BrainName.GetHashCode();
       if (IsTraining != false) hash ^= IsTraining.GetHashCode();
-      hash ^= vectorObservationDescriptions_.GetHashCode();
+      hash ^= agentNames_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -243,22 +257,23 @@ namespace MLAgents.CommunicatorObjects {
         output.WriteRawTag(16);
         output.WriteInt32(NumStackedVectorObservations);
       }
+      vectorObservationDescriptions_.WriteTo(output, _repeated_vectorObservationDescriptions_codec);
       vectorActionSize_.WriteTo(output, _repeated_vectorActionSize_codec);
       cameraResolutions_.WriteTo(output, _repeated_cameraResolutions_codec);
       vectorActionDescriptions_.WriteTo(output, _repeated_vectorActionDescriptions_codec);
       if (VectorActionSpaceType != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(56);
         output.WriteEnum((int) VectorActionSpaceType);
       }
       if (BrainName.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteString(BrainName);
       }
       if (IsTraining != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteBool(IsTraining);
       }
-      vectorObservationDescriptions_.WriteTo(output, _repeated_vectorObservationDescriptions_codec);
+      agentNames_.WriteTo(output, _repeated_agentNames_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -273,6 +288,7 @@ namespace MLAgents.CommunicatorObjects {
       if (NumStackedVectorObservations != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(NumStackedVectorObservations);
       }
+      size += vectorObservationDescriptions_.CalculateSize(_repeated_vectorObservationDescriptions_codec);
       size += vectorActionSize_.CalculateSize(_repeated_vectorActionSize_codec);
       size += cameraResolutions_.CalculateSize(_repeated_cameraResolutions_codec);
       size += vectorActionDescriptions_.CalculateSize(_repeated_vectorActionDescriptions_codec);
@@ -285,7 +301,7 @@ namespace MLAgents.CommunicatorObjects {
       if (IsTraining != false) {
         size += 1 + 1;
       }
-      size += vectorObservationDescriptions_.CalculateSize(_repeated_vectorObservationDescriptions_codec);
+      size += agentNames_.CalculateSize(_repeated_agentNames_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -303,6 +319,7 @@ namespace MLAgents.CommunicatorObjects {
       if (other.NumStackedVectorObservations != 0) {
         NumStackedVectorObservations = other.NumStackedVectorObservations;
       }
+      vectorObservationDescriptions_.Add(other.vectorObservationDescriptions_);
       vectorActionSize_.Add(other.vectorActionSize_);
       cameraResolutions_.Add(other.cameraResolutions_);
       vectorActionDescriptions_.Add(other.vectorActionDescriptions_);
@@ -315,7 +332,7 @@ namespace MLAgents.CommunicatorObjects {
       if (other.IsTraining != false) {
         IsTraining = other.IsTraining;
       }
-      vectorObservationDescriptions_.Add(other.vectorObservationDescriptions_);
+      agentNames_.Add(other.agentNames_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -335,33 +352,37 @@ namespace MLAgents.CommunicatorObjects {
             NumStackedVectorObservations = input.ReadInt32();
             break;
           }
-          case 26:
-          case 24: {
+          case 26: {
+            vectorObservationDescriptions_.AddEntriesFrom(input, _repeated_vectorObservationDescriptions_codec);
+            break;
+          }
+          case 34:
+          case 32: {
             vectorActionSize_.AddEntriesFrom(input, _repeated_vectorActionSize_codec);
             break;
           }
-          case 34: {
+          case 42: {
             cameraResolutions_.AddEntriesFrom(input, _repeated_cameraResolutions_codec);
             break;
           }
-          case 42: {
+          case 50: {
             vectorActionDescriptions_.AddEntriesFrom(input, _repeated_vectorActionDescriptions_codec);
             break;
           }
-          case 48: {
+          case 56: {
             vectorActionSpaceType_ = (global::MLAgents.CommunicatorObjects.SpaceTypeProto) input.ReadEnum();
             break;
           }
-          case 58: {
+          case 66: {
             BrainName = input.ReadString();
             break;
           }
-          case 64: {
+          case 72: {
             IsTraining = input.ReadBool();
             break;
           }
-          case 74: {
-            vectorObservationDescriptions_.AddEntriesFrom(input, _repeated_vectorObservationDescriptions_codec);
+          case 82: {
+            agentNames_.AddEntriesFrom(input, _repeated_agentNames_codec);
             break;
           }
         }
