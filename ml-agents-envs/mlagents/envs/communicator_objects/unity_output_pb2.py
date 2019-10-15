@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='communicator_objects',
   syntax='proto3',
   serialized_options=_b('\252\002\034MLAgents.CommunicatorObjects'),
-  serialized_pb=_b('\n5mlagents/envs/communicator_objects/unity_output.proto\x12\x14\x63ommunicator_objects\x1a\x38mlagents/envs/communicator_objects/unity_rl_output.proto\x1aGmlagents/envs/communicator_objects/unity_rl_initialization_output.proto\"\x9a\x01\n\x0bUnityOutput\x12\x36\n\trl_output\x18\x01 \x01(\x0b\x32#.communicator_objects.UnityRLOutput\x12S\n\x18rl_initialization_output\x18\x02 \x01(\x0b\x32\x31.communicator_objects.UnityRLInitializationOutputB\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
+  serialized_pb=_b('\n5mlagents/envs/communicator_objects/unity_output.proto\x12\x14\x63ommunicator_objects\x1a\x38mlagents/envs/communicator_objects/unity_rl_output.proto\x1aGmlagents/envs/communicator_objects/unity_rl_initialization_output.proto\"\xb0\x01\n\x0bUnityOutput\x12\x36\n\trl_output\x18\x01 \x01(\x0b\x32#.communicator_objects.UnityRLOutput\x12S\n\x18rl_initialization_output\x18\x02 \x01(\x0b\x32\x31.communicator_objects.UnityRLInitializationOutput\x12\x14\n\x0crandom_state\x18\x03 \x01(\tB\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
   ,
   dependencies=[mlagents_dot_envs_dot_communicator__objects_dot_unity__rl__output__pb2.DESCRIPTOR,mlagents_dot_envs_dot_communicator__objects_dot_unity__rl__initialization__output__pb2.DESCRIPTOR,])
 
@@ -49,6 +49,13 @@ _UNITYOUTPUT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='random_state', full_name='communicator_objects.UnityOutput.random_state', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -62,7 +69,7 @@ _UNITYOUTPUT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=211,
-  serialized_end=365,
+  serialized_end=387,
 )
 
 _UNITYOUTPUT.fields_by_name['rl_output'].message_type = mlagents_dot_envs_dot_communicator__objects_dot_unity__rl__output__pb2._UNITYRLOUTPUT

@@ -11,5 +11,6 @@ message UnityOutput {
     UnityRLInitializationOutput rl_initialization_output = 2;
 
     //More messages can be added here
+    string random_state = 3;
 }
 

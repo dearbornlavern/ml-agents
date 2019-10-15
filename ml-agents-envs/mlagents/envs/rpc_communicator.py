@@ -59,7 +59,8 @@ class RpcCommunicator(Communicator):
             self.server.add_insecure_port('[::]:' + str(self.port))
             self.server.start()
             self.is_open = True
-        except:
+        except Exception as e:
+            logger.error(f"Error creating gRPC server (port: {self.port}): {e}")
             raise UnityWorkerInUseException(self.worker_id)
 
     def check_port(self, port):
@@ -67,9 +68,11 @@ class RpcCommunicator(Communicator):
         Attempts to bind to the requested communicator port, checking if it is already in use.
         """
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)  # allow reuse
         try:
             s.bind(("localhost", port))
-        except socket.error:
+        except socket.error as e:
+            logger.error(f"Error binding to socket port {port}: {e}")
             raise UnityWorkerInUseException(self.worker_id)
         finally:
             s.close()
@@ -110,4 +113,5 @@ class RpcCommunicator(Communicator):
             self.unity_to_external.parent_conn.send(message_input)
             self.unity_to_external.parent_conn.close()
             self.server.stop(False)
+            self.server.wait_for_termination()
             self.is_open = False

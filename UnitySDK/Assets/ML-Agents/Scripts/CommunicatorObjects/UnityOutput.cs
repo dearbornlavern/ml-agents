@@ -28,16 +28,16 @@ namespace MLAgents.CommunicatorObjects {
             "dHB1dC5wcm90bxIUY29tbXVuaWNhdG9yX29iamVjdHMaOG1sYWdlbnRzL2Vu",
             "dnMvY29tbXVuaWNhdG9yX29iamVjdHMvdW5pdHlfcmxfb3V0cHV0LnByb3Rv",
             "GkdtbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL3VuaXR5X3Js",
-            "X2luaXRpYWxpemF0aW9uX291dHB1dC5wcm90byKaAQoLVW5pdHlPdXRwdXQS",
+            "X2luaXRpYWxpemF0aW9uX291dHB1dC5wcm90byKwAQoLVW5pdHlPdXRwdXQS",
             "NgoJcmxfb3V0cHV0GAEgASgLMiMuY29tbXVuaWNhdG9yX29iamVjdHMuVW5p",
             "dHlSTE91dHB1dBJTChhybF9pbml0aWFsaXphdGlvbl9vdXRwdXQYAiABKAsy",
             "MS5jb21tdW5pY2F0b3Jfb2JqZWN0cy5Vbml0eVJMSW5pdGlhbGl6YXRpb25P",
-            "dXRwdXRCH6oCHE1MQWdlbnRzLkNvbW11bmljYXRvck9iamVjdHNiBnByb3Rv",
-            "Mw=="));
+            "dXRwdXQSFAoMcmFuZG9tX3N0YXRlGAMgASgJQh+qAhxNTEFnZW50cy5Db21t",
+            "dW5pY2F0b3JPYmplY3RzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MLAgents.CommunicatorObjects.UnityRlOutputReflection.Descriptor, global::MLAgents.CommunicatorObjects.UnityRlInitializationOutputReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityOutput), global::MLAgents.CommunicatorObjects.UnityOutput.Parser, new[]{ "RlOutput", "RlInitializationOutput" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityOutput), global::MLAgents.CommunicatorObjects.UnityOutput.Parser, new[]{ "RlOutput", "RlInitializationOutput", "RandomState" }, null, null, null)
           }));
     }
     #endregion
@@ -71,6 +71,7 @@ namespace MLAgents.CommunicatorObjects {
     public UnityOutput(UnityOutput other) : this() {
       rlOutput_ = other.rlOutput_ != null ? other.rlOutput_.Clone() : null;
       rlInitializationOutput_ = other.rlInitializationOutput_ != null ? other.rlInitializationOutput_.Clone() : null;
+      randomState_ = other.randomState_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -101,6 +102,20 @@ namespace MLAgents.CommunicatorObjects {
       }
     }
 
+    /// <summary>Field number for the "random_state" field.</summary>
+    public const int RandomStateFieldNumber = 3;
+    private string randomState_ = "";
+    /// <summary>
+    ///More messages can be added here
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RandomState {
+      get { return randomState_; }
+      set {
+        randomState_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as UnityOutput);
@@ -116,6 +131,7 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (!object.Equals(RlOutput, other.RlOutput)) return false;
       if (!object.Equals(RlInitializationOutput, other.RlInitializationOutput)) return false;
+      if (RandomState != other.RandomState) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -124,6 +140,7 @@ namespace MLAgents.CommunicatorObjects {
       int hash = 1;
       if (rlOutput_ != null) hash ^= RlOutput.GetHashCode();
       if (rlInitializationOutput_ != null) hash ^= RlInitializationOutput.GetHashCode();
+      if (RandomState.Length != 0) hash ^= RandomState.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -145,6 +162,10 @@ namespace MLAgents.CommunicatorObjects {
         output.WriteRawTag(18);
         output.WriteMessage(RlInitializationOutput);
       }
+      if (RandomState.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RandomState);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -158,6 +179,9 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (rlInitializationOutput_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(RlInitializationOutput);
+      }
+      if (RandomState.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RandomState);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -182,6 +206,9 @@ namespace MLAgents.CommunicatorObjects {
         }
         RlInitializationOutput.MergeFrom(other.RlInitializationOutput);
       }
+      if (other.RandomState.Length != 0) {
+        RandomState = other.RandomState;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -205,6 +232,10 @@ namespace MLAgents.CommunicatorObjects {
               rlInitializationOutput_ = new global::MLAgents.CommunicatorObjects.UnityRLInitializationOutput();
             }
             input.ReadMessage(rlInitializationOutput_);
+            break;
+          }
+          case 26: {
+            RandomState = input.ReadString();
             break;
           }
         }

@@ -60,9 +60,11 @@ class UnityEnvironment(BaseUnityEnvironment):
         self.train_mode = train_mode
         self._buffer_size = 12000
         self._version_ = "API-8"
+        self.log_file = log_file
         self._loaded = False  # If true, this means the environment was successfully loaded
         self.proc1 = None  # The process that is started. If None, no process was started
         self.communicator = self.get_communicator(worker_id, base_port, timeout_wait)
+        self.random_state = None
 
         # If the environment name is None, a new environment will not be launched
         # and the communicator will directly try to connect to an existing unity environment.
@@ -459,6 +461,7 @@ class UnityEnvironment(BaseUnityEnvironment):
             if outputs is None:
                 raise KeyboardInterrupt
             rl_output = outputs.rl_output
+            self.random_state = outputs.random_state
             state = self._get_state(rl_output)
             self._global_done = state[1]
             for _b in self._external_brain_names:
@@ -484,11 +487,17 @@ class UnityEnvironment(BaseUnityEnvironment):
             raise UnityEnvironmentException("No Unity environment is loaded.")
 
     def _close(self):
+        from shutil import copyfile
+        logcopy = self.log_file.replace(".txt", "-prev.txt")
+        copyfile(self.log_file, logcopy)
+
         self._loaded = False
         if hasattr(self, "communicator"):
             self.communicator.close()
         if self.proc1 is not None:
             self.proc1.kill()
+            self.proc1.wait(10)
+            logger.info(f"Successfully closed process!")
 
     @classmethod
     def _flatten(cls, arr) -> List[float]:
