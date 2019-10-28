@@ -1,6 +1,8 @@
 import logging
+from typing import Optional
 
-from .communicator_objects import UnityOutput, UnityInput
+from mlagents.envs.communicator_objects.unity_output_pb2 import UnityOutput
+from mlagents.envs.communicator_objects.unity_input_pb2 import UnityInput
 
 logger = logging.getLogger("mlagents.envs")
 
@@ -21,7 +23,7 @@ class Communicator(object):
         :return: UnityOutput: The initialization output sent by Unity
         """
 
-    def exchange(self, inputs: UnityInput) -> UnityOutput:
+    def exchange(self, inputs: UnityInput) -> Optional[UnityOutput]:
         """
         Used to send an input and receive an output from the Environment
         :param inputs: The UnityInput that needs to be sent the Environment
@@ -32,4 +34,3 @@ class Communicator(object):
         """
         Sends a shutdown signal to the unity environment, and closes the connection.
         """
-

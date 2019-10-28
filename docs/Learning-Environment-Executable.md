@@ -31,8 +31,8 @@ Make sure the Brains in the scene have the right type. For example, if you want
 to be able to control your agents from Python, you will need to put the Brain
 controlling the Agents to be a **Learning Brain** and drag it into the
 Academy's `Broadcast Hub` with the `Control` checkbox checked. In the 3DBall
-scene, this can be done in the Platform GameObject within the Game prefab in 
-`Assets/ML-Agents/Examples/3DBall/Prefabs/`, or in each instance of the 
+scene, this can be done in the Platform GameObject within the Game prefab in
+`Assets/ML-Agents/Examples/3DBall/Prefabs/`, or in each instance of the
 Platform in the Scene.
 
 Next, we want the set up scene to play correctly when the training process
@@ -57,9 +57,9 @@ launches our environment executable. This means:
    * In the File dialog, navigate to your ML-Agents directory.
    * Assign a file name and click **Save**.
    * (For Windows）With Unity 2018.1, it will ask you to select a folder instead
-     of a file name. Create a subfolder within the ML-Agents folder and select
+     of a file name. Create a subfolder within the root directory and select
      that folder to build. In the following steps you will refer to this
-     subfolder's name as `env_name`.
+     subfolder's name as `env_name`. You cannot create builds in the Assets folder
 
 ![Build Window](images/mlagents-BuildWindow.png)
 
@@ -73,7 +73,7 @@ executable, you can pass the name of the executable with the argument
 'file_name' of the `UnityEnvironment`. For instance:
 
 ```python
-from mlagents.envs import UnityEnvironment
+from mlagents.envs.environment import UnityEnvironment
 env = UnityEnvironment(file_name=<env_name>)
 ```
 

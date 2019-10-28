@@ -16,7 +16,7 @@ Unity settings.
 1. Launch Unity
 2. On the Projects dialog, choose the **Open** option at the top of the window.
 3. Using the file dialog that opens, locate the `UnitySDK` folder
-   within the the ML-Agents toolkit project and click **Open**.
+   within the ML-Agents toolkit project and click **Open**.
 4. Go to **Edit** > **Project Settings** > **Player**
 5. For **each** of the platforms you target (**PC, Mac and Linux Standalone**,
    **iOS** or **Android**):
@@ -59,7 +59,7 @@ inside Unity. In this section, we will use the pre-trained model for the
 9. Click the **Play** button and you will see the platforms balance the balls
    using the pre-trained model.
 
-   ![Running a pre-trained model](images/running-a-pretrained-model.gif)
+   ![Running a pre-trained model](images/balance.png)
 
 ## Using the Basics Jupyter Notebook
 
@@ -83,7 +83,7 @@ To set up the environment for training, you will need to specify which agents ar
 to the training and which Brain is being trained. You can only perform training with
 a `Learning Brain`.
 
-1. Each platform agent needs an assigned `Learning Brain`.  In this example, each platform agent was created using a prefab.  To update all of the brains in each platform agent at once, you only need to update the platform agent prefab.  In the **Project** window, go to the `Assets/ML-Agents/Examples/3DBall/Prefabs` folder. Expand `Game` and click on the `Platform` prefab.  You should see the `Platform` prefab in the **Inspector** window.  In the **Project** window, drag the **3DBallLearning** Brain located in  `Assets/ML-Agents/Examples/3DBall/Brains` into the `Brain` property under `Ball 3D Agent (Script)` component in the **Inspector** window.  
+1. Each platform agent needs an assigned `Learning Brain`.  In this example, each platform agent was created using a prefab.  To update all of the brains in each platform agent at once, you only need to update the platform agent prefab.  In the **Project** window, go to the `Assets/ML-Agents/Examples/3DBall/Prefabs` folder. You should see the `3DBall` prefab in the **Inspector** window. Now expand the prefab and select `Agent` which should appear now on your **Inspector** window.  In the **Project** window, drag the **3DBallLearning** Brain located in  `Assets/ML-Agents/Examples/3DBall/Brains` into the `Brain` property under `Ball 3D Agent (Script)` component in the **Inspector** window.  
 
    **Note**: The Unity prefab system will modify all instances of the agent properties in your scene.  If the agent does not synchronize automatically with the prefab, you can hit the Revert button in the top of the **Inspector** window.
 
@@ -238,9 +238,10 @@ the steps described
    `UnitySDK/Assets/ML-Agents/Examples/3DBall/TFModels/`.
 2. Open the Unity Editor, and select the **3DBall** scene as described above.
 3. Select the  **3DBallLearning** Learning Brain from the Scene hierarchy.
-5. Drag the `<brain_name>.nn` file from the Project window of
+4. Drag the `<brain_name>.nn` file from the Project window of
    the Editor to the **Model** placeholder in the **3DBallLearning**
    inspector window.
+5. Select Ball3DAcademy in the scene and toggle off Control, each platform's brain now regains control.
 6. Press the :arrow_forward: button at the top of the Editor.
 
 ## Next Steps

@@ -1,13 +1,19 @@
 import logging
 import grpc
+from typing import Optional
 
 import socket
 from multiprocessing import Pipe
 from concurrent.futures import ThreadPoolExecutor
 
 from .communicator import Communicator
-from .communicator_objects import UnityToExternalServicer, add_UnityToExternalServicer_to_server
-from .communicator_objects import UnityMessage, UnityInput, UnityOutput
+from mlagents.envs.communicator_objects.unity_to_external_pb2_grpc import (
+    UnityToExternalServicer,
+    add_UnityToExternalServicer_to_server,
+)
+from mlagents.envs.communicator_objects.unity_message_pb2 import UnityMessage
+from mlagents.envs.communicator_objects.unity_input_pb2 import UnityInput
+from mlagents.envs.communicator_objects.unity_output_pb2 import UnityOutput
 from .exception import UnityTimeOutException, UnityWorkerInUseException
 
 logger = logging.getLogger("mlagents.envs")
@@ -56,7 +62,7 @@ class RpcCommunicator(Communicator):
             add_UnityToExternalServicer_to_server(self.unity_to_external, self.server)
             # Using unspecified address, which means that grpc is communicating on all IPs
             # This is so that the docker container can connect.
-            self.server.add_insecure_port('[::]:' + str(self.port))
+            self.server.add_insecure_port("[::]:" + str(self.port))
             self.server.start()
             self.is_open = True
         except Exception as e:
@@ -84,7 +90,8 @@ class RpcCommunicator(Communicator):
                 "\t The environment does not need user interaction to launch\n"
                 "\t The Academy's Broadcast Hub is configured correctly\n"
                 "\t The Agents are linked to the appropriate Brains\n"
-                "\t The environment and the Python interface have compatible versions.")
+                "\t The environment and the Python interface have compatible versions."
+            )
         aca_param = self.unity_to_external.parent_conn.recv().unity_output
         message = UnityMessage()
         message.header.status = 200
@@ -93,7 +100,7 @@ class RpcCommunicator(Communicator):
         self.unity_to_external.parent_conn.recv()
         return aca_param
 
-    def exchange(self, inputs: UnityInput) -> UnityOutput:
+    def exchange(self, inputs: UnityInput) -> Optional[UnityOutput]:
         message = UnityMessage()
         message.header.status = 200
         message.unity_input.CopyFrom(inputs)
