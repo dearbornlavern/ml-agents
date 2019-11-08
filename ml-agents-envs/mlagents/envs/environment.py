@@ -48,15 +48,13 @@ class UnityEnvironment(BaseUnityEnvironment):
         file_name: Optional[str] = None,
         worker_id: int = 0,
         base_port: int = 5005,
-        seed: int = 0,
+        seed: int = 0,  # TODO - this is deprecated
         docker_training: bool = False,
         no_graphics: bool = False,
         timeout_wait: int = 30,
         args: Optional[List[str]] = None,
         train_mode: bool = False,
         log_file: str = None,
-        horizon: int = 250,
-        substeps: int = 1,
     ):
         """
         Starts a new unity environment and establishes a connection with the environment.
@@ -107,9 +105,6 @@ class UnityEnvironment(BaseUnityEnvironment):
         self._loaded = True
 
         rl_init_parameters_in = UnityRLInitializationInput(
-            seed=seed,
-            horizon=horizon,
-            substeps=substeps,
         )
         try:
             aca_params = self.send_academy_parameters(rl_init_parameters_in)
@@ -262,7 +257,6 @@ class UnityEnvironment(BaseUnityEnvironment):
 
             # Launch Unity environment
             if not docker_training:
-                subprocess_args = [launch_string]
                 if no_graphics:
                     cmd += ['-nographics', '-batchmode']
 
@@ -598,8 +592,9 @@ class UnityEnvironment(BaseUnityEnvironment):
 
     def _close(self):
         from shutil import copyfile
-        logcopy = self.log_file.replace(".txt", "-prev.txt")
-        copyfile(self.log_file, logcopy)
+        if os.path.isfile(self.log_file):
+            logcopy = self.log_file.replace(".txt", "-prev.txt")
+            copyfile(self.log_file, logcopy)
 
         self._loaded = False
         if hasattr(self, "communicator"):

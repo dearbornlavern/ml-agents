@@ -5,7 +5,4 @@ package communicator_objects;
 
 
 message UnityRLInitializationInput {
-    int32 seed = 1;
-    int32 horizon = 2;
-    int32 substeps = 3;
 }

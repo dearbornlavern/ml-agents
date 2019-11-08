@@ -31,7 +31,7 @@ echo "  Source: $SRC_DIR"
 echo "  C# Destination: $DST_DIR_C"
 echo "  Python Destination: $DST_DIR_P"
 protoc --proto_path=$PROTO_PATH --csharp_out=$DST_DIR_C $SRC_DIR/*.proto
-protoc --proto_path=$PROTO_PATH --python_out=$DST_DIR_P $SRC_DIR/*.proto 
+protoc --proto_path=$PROTO_PATH --python_out=$DST_DIR_P --mypy_out=$DST_DIR_P $SRC_DIR/*.proto 
 
 # grpc 
 echo "Compiling GRPC Protobuffers:"

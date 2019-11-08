@@ -120,5 +120,5 @@ class RpcCommunicator(Communicator):
             self.unity_to_external.parent_conn.send(message_input)
             self.unity_to_external.parent_conn.close()
             self.server.stop(False)
-            self.server.wait_for_termination()
+            # self.server.wait_for_termination()  # FIXME - this method isn't found in grpc api
             self.is_open = False
