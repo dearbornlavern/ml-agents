@@ -73,6 +73,7 @@ class UnityEnvironment(BaseUnityEnvironment):
         """
         args = args or []
         atexit.register(self._close)
+        self.file_name = file_name
         self.port = base_port + worker_id
         self.train_mode = train_mode
         self._buffer_size = 12000
@@ -591,18 +592,28 @@ class UnityEnvironment(BaseUnityEnvironment):
             raise UnityEnvironmentException("No Unity environment is loaded.")
 
     def _close(self):
-        from shutil import copyfile
-        if os.path.isfile(self.log_file):
-            logcopy = self.log_file.replace(".txt", "-prev.txt")
-            copyfile(self.log_file, logcopy)
+        logger.info(f"Closing Unity environment: {self.file_name}")
 
+        # store the log file as previous
+        if hasattr(self, "log_file"):
+            from shutil import copyfile
+            if os.path.isfile(self.log_file):
+                log_prev = self.log_file.replace(".txt", "-prev.txt")
+                copyfile(self.log_file, log_prev)
+
+        # close gRPC
         self._loaded = False
         if hasattr(self, "communicator"):
             self.communicator.close()
-        if self.proc1 is not None:
-            self.proc1.kill()
-            self.proc1.wait(10)
-            logger.info(f"Successfully closed process!")
+
+        # kill process
+        if hasattr(self, "proc1"):
+            if self.proc1 is not None:
+                logger.info(f"Killing Unity process: {self.proc1}")
+                self.proc1.kill()
+                logger.info(f"Waiting for Unity process: {self.proc1}")
+                self.proc1.wait(10)
+                logger.info(f"Successfully closed process!")
 
     @classmethod
     def _flatten(cls, arr: Any) -> List[float]:
