@@ -25,6 +25,7 @@ class BrainParameters:
         vector_action_space_size: List[int],
         vector_action_descriptions: List[str],
         vector_action_space_type: int,
+        vector_action_feature_types: List[int],
     ):
         """
         Contains all brain-specific parameters.
@@ -41,6 +42,10 @@ class BrainParameters:
         self.vector_action_space_type = ["discrete", "continuous"][
             vector_action_space_type
         ]
+        feature_types = ["bool", "int", "float"]
+        self.vector_action_feature_types = []
+        for feature_type in vector_action_feature_types:
+            self.vector_action_feature_types.append(feature_types[feature_type])
 
     def __str__(self):
         return """Unity brain name: {}
@@ -49,6 +54,7 @@ class BrainParameters:
         Vector Observation space size (per agent): {}
         Number of stacked Vector Observation: {}
         Vector Action space type: {}
+        Vector Action feature types: {}
         Vector Action space size (per agent): {}
         Vector Action descriptions: {}
         Vector Observation descriptions: {}""".format(
@@ -58,6 +64,7 @@ class BrainParameters:
             str(self.vector_observation_space_size),
             str(self.num_stacked_vector_observations),
             self.vector_action_space_type,
+            str(self.vector_action_feature_types),
             str(self.vector_action_space_size),
             ", ".join(self.vector_action_descriptions),
             ', '.join(self.vector_observation_descriptions),
@@ -84,6 +91,7 @@ class BrainParameters:
             list(brain_param_proto.vector_action_size),
             list(brain_param_proto.vector_action_descriptions),
             brain_param_proto.vector_action_space_type,
+            brain_param_proto.vector_action_feature_types,
         )
         return brain_params
 

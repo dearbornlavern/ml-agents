@@ -14,7 +14,8 @@ message BrainParametersProto {
     repeated ResolutionProto camera_resolutions = 5;
     repeated string vector_action_descriptions = 6;
     SpaceTypeProto vector_action_space_type = 7;
-    string brain_name = 8;
-    bool is_training = 9;
-    repeated string agent_names = 10;
+    repeated FeatureTypeProto vector_action_feature_types = 8;
+    string brain_name = 9;
+    bool is_training = 10;
+    repeated string agent_names = 11;
 }

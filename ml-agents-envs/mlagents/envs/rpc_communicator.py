@@ -7,7 +7,9 @@ from multiprocessing import Pipe
 from concurrent.futures import ThreadPoolExecutor
 
 from .communicator import Communicator
-from mlagents.envs.communicator_objects.unity_to_external_pb2_grpc import (
+# HACK - moved this file due to inability to regenerate properly...
+# from mlagents.envs.communicator_objects.unity_to_external_pb2_grpc import (
+from mlagents.envs.unity_to_external_pb2_grpc import (
     UnityToExternalServicer,
     add_UnityToExternalServicer_to_server,
 )

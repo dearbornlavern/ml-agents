@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='communicator_objects',
   syntax='proto3',
   serialized_options=_b('\252\002\034MLAgents.CommunicatorObjects'),
-  serialized_pb=_b('\n9mlagents/envs/communicator_objects/space_type_proto.proto\x12\x14\x63ommunicator_objects\x1a\x39mlagents/envs/communicator_objects/resolution_proto.proto*.\n\x0eSpaceTypeProto\x12\x0c\n\x08\x64iscrete\x10\x00\x12\x0e\n\ncontinuous\x10\x01\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
+  serialized_pb=_b('\n9mlagents/envs/communicator_objects/space_type_proto.proto\x12\x14\x63ommunicator_objects\x1a\x39mlagents/envs/communicator_objects/resolution_proto.proto*.\n\x0eSpaceTypeProto\x12\x0c\n\x08\x64iscrete\x10\x00\x12\x0e\n\ncontinuous\x10\x01*0\n\x10\x46\x65\x61tureTypeProto\x12\x08\n\x04\x62ool\x10\x00\x12\x07\n\x03int\x10\x01\x12\t\n\x05\x66loat\x10\x02\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
   ,
   dependencies=[mlagents_dot_envs_dot_communicator__objects_dot_resolution__proto__pb2.DESCRIPTOR,])
 
@@ -48,11 +48,42 @@ _SPACETYPEPROTO = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_SPACETYPEPROTO)
 
 SpaceTypeProto = enum_type_wrapper.EnumTypeWrapper(_SPACETYPEPROTO)
+_FEATURETYPEPROTO = _descriptor.EnumDescriptor(
+  name='FeatureTypeProto',
+  full_name='communicator_objects.FeatureTypeProto',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='bool', index=0, number=0,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='int', index=1, number=1,
+      serialized_options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='float', index=2, number=2,
+      serialized_options=None,
+      type=None),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=190,
+  serialized_end=238,
+)
+_sym_db.RegisterEnumDescriptor(_FEATURETYPEPROTO)
+
+FeatureTypeProto = enum_type_wrapper.EnumTypeWrapper(_FEATURETYPEPROTO)
 discrete = 0
 continuous = 1
+bool = 0
+int = 1
+float = 2
 
 
 DESCRIPTOR.enum_types_by_name['SpaceTypeProto'] = _SPACETYPEPROTO
+DESCRIPTOR.enum_types_by_name['FeatureTypeProto'] = _FEATURETYPEPROTO
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 

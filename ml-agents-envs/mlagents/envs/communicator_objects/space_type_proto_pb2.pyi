@@ -35,3 +35,22 @@ class SpaceTypeProto(builtin___int):
     continuous = typing___cast('SpaceTypeProto', 1)
 discrete = typing___cast('SpaceTypeProto', 0)
 continuous = typing___cast('SpaceTypeProto', 1)
+
+class FeatureTypeProto(builtin___int):
+    DESCRIPTOR: google___protobuf___descriptor___EnumDescriptor = ...
+    @classmethod
+    def Name(cls, number: builtin___int) -> builtin___str: ...
+    @classmethod
+    def Value(cls, name: builtin___str) -> 'FeatureTypeProto': ...
+    @classmethod
+    def keys(cls) -> typing___List[builtin___str]: ...
+    @classmethod
+    def values(cls) -> typing___List['FeatureTypeProto']: ...
+    @classmethod
+    def items(cls) -> typing___List[typing___Tuple[builtin___str, 'FeatureTypeProto']]: ...
+    bool = typing___cast('FeatureTypeProto', 0)
+    int = typing___cast('FeatureTypeProto', 1)
+    float = typing___cast('FeatureTypeProto', 2)
+bool = typing___cast('FeatureTypeProto', 0)
+int = typing___cast('FeatureTypeProto', 1)
+float = typing___cast('FeatureTypeProto', 2)

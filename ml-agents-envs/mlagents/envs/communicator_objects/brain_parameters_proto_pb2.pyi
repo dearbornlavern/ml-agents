@@ -18,6 +18,7 @@ from mlagents.envs.communicator_objects.resolution_proto_pb2 import (
 )
 
 from mlagents.envs.communicator_objects.space_type_proto_pb2 import (
+    FeatureTypeProto as mlagents___envs___communicator_objects___space_type_proto_pb2___FeatureTypeProto,
     SpaceTypeProto as mlagents___envs___communicator_objects___space_type_proto_pb2___SpaceTypeProto,
 )
 
@@ -46,6 +47,7 @@ class BrainParametersProto(google___protobuf___message___Message):
     vector_action_size = ... # type: google___protobuf___internal___containers___RepeatedScalarFieldContainer[builtin___int]
     vector_action_descriptions = ... # type: google___protobuf___internal___containers___RepeatedScalarFieldContainer[typing___Text]
     vector_action_space_type = ... # type: mlagents___envs___communicator_objects___space_type_proto_pb2___SpaceTypeProto
+    vector_action_feature_types = ... # type: google___protobuf___internal___containers___RepeatedScalarFieldContainer[mlagents___envs___communicator_objects___space_type_proto_pb2___FeatureTypeProto]
     brain_name = ... # type: typing___Text
     is_training = ... # type: builtin___bool
     agent_names = ... # type: google___protobuf___internal___containers___RepeatedScalarFieldContainer[typing___Text]
@@ -62,6 +64,7 @@ class BrainParametersProto(google___protobuf___message___Message):
         camera_resolutions : typing___Optional[typing___Iterable[mlagents___envs___communicator_objects___resolution_proto_pb2___ResolutionProto]] = None,
         vector_action_descriptions : typing___Optional[typing___Iterable[typing___Text]] = None,
         vector_action_space_type : typing___Optional[mlagents___envs___communicator_objects___space_type_proto_pb2___SpaceTypeProto] = None,
+        vector_action_feature_types : typing___Optional[typing___Iterable[mlagents___envs___communicator_objects___space_type_proto_pb2___FeatureTypeProto]] = None,
         brain_name : typing___Optional[typing___Text] = None,
         is_training : typing___Optional[builtin___bool] = None,
         agent_names : typing___Optional[typing___Iterable[typing___Text]] = None,
@@ -71,6 +74,6 @@ class BrainParametersProto(google___protobuf___message___Message):
     def MergeFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
     def CopyFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
     if sys.version_info >= (3,):
-        def ClearField(self, field_name: typing_extensions___Literal[u"agent_names",u"brain_name",u"camera_resolutions",u"is_training",u"num_stacked_vector_observations",u"vector_action_descriptions",u"vector_action_size",u"vector_action_space_type",u"vector_observation_descriptions",u"vector_observation_size"]) -> None: ...
+        def ClearField(self, field_name: typing_extensions___Literal[u"agent_names",u"brain_name",u"camera_resolutions",u"is_training",u"num_stacked_vector_observations",u"vector_action_descriptions",u"vector_action_feature_types",u"vector_action_size",u"vector_action_space_type",u"vector_observation_descriptions",u"vector_observation_size"]) -> None: ...
     else:
-        def ClearField(self, field_name: typing_extensions___Literal[u"agent_names",b"agent_names",u"brain_name",b"brain_name",u"camera_resolutions",b"camera_resolutions",u"is_training",b"is_training",u"num_stacked_vector_observations",b"num_stacked_vector_observations",u"vector_action_descriptions",b"vector_action_descriptions",u"vector_action_size",b"vector_action_size",u"vector_action_space_type",b"vector_action_space_type",u"vector_observation_descriptions",b"vector_observation_descriptions",u"vector_observation_size",b"vector_observation_size"]) -> None: ...
+        def ClearField(self, field_name: typing_extensions___Literal[u"agent_names",b"agent_names",u"brain_name",b"brain_name",u"camera_resolutions",b"camera_resolutions",u"is_training",b"is_training",u"num_stacked_vector_observations",b"num_stacked_vector_observations",u"vector_action_descriptions",b"vector_action_descriptions",u"vector_action_feature_types",b"vector_action_feature_types",u"vector_action_size",b"vector_action_size",u"vector_action_space_type",b"vector_action_space_type",u"vector_observation_descriptions",b"vector_observation_descriptions",u"vector_observation_size",b"vector_observation_size"]) -> None: ...

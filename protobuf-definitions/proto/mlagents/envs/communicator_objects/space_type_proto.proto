@@ -10,3 +10,8 @@ enum SpaceTypeProto {
     continuous = 1;
 }
 
+enum FeatureTypeProto {
+    bool = 0;
+    int = 1;
+    float = 2;
+}

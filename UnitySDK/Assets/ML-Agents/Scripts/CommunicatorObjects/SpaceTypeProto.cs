@@ -28,11 +28,12 @@ namespace MLAgents.CommunicatorObjects {
             "cGVfcHJvdG8ucHJvdG8SFGNvbW11bmljYXRvcl9vYmplY3RzGjltbGFnZW50",
             "cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL3Jlc29sdXRpb25fcHJvdG8u",
             "cHJvdG8qLgoOU3BhY2VUeXBlUHJvdG8SDAoIZGlzY3JldGUQABIOCgpjb250",
-            "aW51b3VzEAFCH6oCHE1MQWdlbnRzLkNvbW11bmljYXRvck9iamVjdHNiBnBy",
-            "b3RvMw=="));
+            "aW51b3VzEAEqMAoQRmVhdHVyZVR5cGVQcm90bxIICgRib29sEAASBwoDaW50",
+            "EAESCQoFZmxvYXQQAkIfqgIcTUxBZ2VudHMuQ29tbXVuaWNhdG9yT2JqZWN0",
+            "c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MLAgents.CommunicatorObjects.ResolutionProtoReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::MLAgents.CommunicatorObjects.SpaceTypeProto), }, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::MLAgents.CommunicatorObjects.SpaceTypeProto), typeof(global::MLAgents.CommunicatorObjects.FeatureTypeProto), }, null));
     }
     #endregion
 
@@ -41,6 +42,12 @@ namespace MLAgents.CommunicatorObjects {
   public enum SpaceTypeProto {
     [pbr::OriginalName("discrete")] Discrete = 0,
     [pbr::OriginalName("continuous")] Continuous = 1,
+  }
+
+  public enum FeatureTypeProto {
+    [pbr::OriginalName("bool")] Bool = 0,
+    [pbr::OriginalName("int")] Int = 1,
+    [pbr::OriginalName("float")] Float = 2,
   }
 
   #endregion
