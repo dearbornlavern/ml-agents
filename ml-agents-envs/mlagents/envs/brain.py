@@ -232,14 +232,15 @@ class BrainInfo:
                         0 if agent_info.action_mask[k] else 1
                         for k in range(total_num_actions)
                     ]
-        if any([np.isnan(x.reward) for x in agent_info_list]):
-            logger.warning(
-                "An agent had a NaN reward for brain " + brain_params.brain_name
-            )
-        if any([np.isnan(x.stacked_vector_observation).any() for x in agent_info_list]):
-            logger.warning(
-                "An agent had a NaN observation for brain " + brain_params.brain_name
-            )
+        # HACK - removing this, so that upstream code can detect instabilities
+        # if any([np.isnan(x.reward) for x in agent_info_list]):
+        #     logger.warning(
+        #         "An agent had a NaN reward for brain " + brain_params.brain_name
+        #     )
+        # if any([np.isnan(x.stacked_vector_observation).any() for x in agent_info_list]):
+        #     logger.warning(
+        #         "An agent had a NaN observation for brain " + brain_params.brain_name
+        #     )
 
         if len(agent_info_list) == 0:
             vector_obs = np.zeros(
@@ -250,9 +251,11 @@ class BrainInfo:
                 )
             )
         else:
-            vector_obs = np.nan_to_num(
-                np.array([x.stacked_vector_observation for x in agent_info_list])
-            )
+            vector_obs = [x.stacked_vector_observation for x in agent_info_list]
+            # HACK - removing this, so that upstream code can detect instabilities
+            # vector_obs = np.nan_to_num(
+            #     np.array([x.stacked_vector_observation for x in agent_info_list])
+            # )
         agents = [f"${worker_id}-{x.id}" for x in agent_info_list]
         brain_info = BrainInfo(
             visual_observation=vis_obs,
