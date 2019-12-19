@@ -99,6 +99,7 @@ build/
 # Python virtual environment
 venv/
 .mypy_cache/
+.python-version
 
 # Code coverage report
 .coverage

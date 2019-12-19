@@ -595,7 +595,7 @@ class UnityEnvironment(BaseUnityEnvironment):
         logger.info(f"Closing Unity environment: {self.file_name}")
 
         # store the log file as previous
-        if hasattr(self, "log_file"):
+        if hasattr(self, "log_file") and self.log_file:
             from shutil import copyfile
             if os.path.isfile(self.log_file):
                 log_prev = self.log_file.replace(".txt", "-prev.txt")
