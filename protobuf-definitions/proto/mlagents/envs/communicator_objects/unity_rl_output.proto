@@ -11,5 +11,6 @@ message UnityRLOutput {
     }
     reserved 1; // deprecated bool global_done field
     map<string, ListAgentInfoProto> agentInfos = 2;
+    map<string, float> metrics = 3;
 }
 

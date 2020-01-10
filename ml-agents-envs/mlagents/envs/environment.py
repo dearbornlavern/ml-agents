@@ -362,6 +362,7 @@ class UnityEnvironment(BaseUnityEnvironment):
             for _b in self._external_brain_names:
                 self._n_agents[_b] = len(s[_b].agents)
             self._is_first_message = False
+            self.metrics = dict(rl_output.metrics)
             return s
         else:
             raise UnityEnvironmentException("No Unity environment is loaded.")
@@ -580,6 +581,7 @@ class UnityEnvironment(BaseUnityEnvironment):
             state = self._get_state(rl_output)
             for _b in self._external_brain_names:
                 self._n_agents[_b] = len(state[_b].agents)
+            self.metrics = dict(rl_output.metrics)
             return state
 
     def close(self):

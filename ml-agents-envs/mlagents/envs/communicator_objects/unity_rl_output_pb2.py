@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='communicator_objects',
   syntax='proto3',
   serialized_options=_b('\252\002\034MLAgents.CommunicatorObjects'),
-  serialized_pb=_b('\n8mlagents/envs/communicator_objects/unity_rl_output.proto\x12\x14\x63ommunicator_objects\x1a\x39mlagents/envs/communicator_objects/agent_info_proto.proto\"\x94\x02\n\rUnityRLOutput\x12G\n\nagentInfos\x18\x02 \x03(\x0b\x32\x33.communicator_objects.UnityRLOutput.AgentInfosEntry\x1aI\n\x12ListAgentInfoProto\x12\x33\n\x05value\x18\x01 \x03(\x0b\x32$.communicator_objects.AgentInfoProto\x1ai\n\x0f\x41gentInfosEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x45\n\x05value\x18\x02 \x01(\x0b\x32\x36.communicator_objects.UnityRLOutput.ListAgentInfoProto:\x02\x38\x01J\x04\x08\x01\x10\x02\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
+  serialized_pb=_b('\n8mlagents/envs/communicator_objects/unity_rl_output.proto\x12\x14\x63ommunicator_objects\x1a\x39mlagents/envs/communicator_objects/agent_info_proto.proto\"\x87\x03\n\rUnityRLOutput\x12G\n\nagentInfos\x18\x02 \x03(\x0b\x32\x33.communicator_objects.UnityRLOutput.AgentInfosEntry\x12\x41\n\x07metrics\x18\x03 \x03(\x0b\x32\x30.communicator_objects.UnityRLOutput.MetricsEntry\x1aI\n\x12ListAgentInfoProto\x12\x33\n\x05value\x18\x01 \x03(\x0b\x32$.communicator_objects.AgentInfoProto\x1ai\n\x0f\x41gentInfosEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x45\n\x05value\x18\x02 \x01(\x0b\x32\x36.communicator_objects.UnityRLOutput.ListAgentInfoProto:\x02\x38\x01\x1a.\n\x0cMetricsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x02:\x02\x38\x01J\x04\x08\x01\x10\x02\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
   ,
   dependencies=[mlagents_dot_envs_dot_communicator__objects_dot_agent__info__proto__pb2.DESCRIPTOR,])
 
@@ -53,8 +53,8 @@ _UNITYRLOUTPUT_LISTAGENTINFOPROTO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=232,
-  serialized_end=305,
+  serialized_start=299,
+  serialized_end=372,
 )
 
 _UNITYRLOUTPUT_AGENTINFOSENTRY = _descriptor.Descriptor(
@@ -90,8 +90,45 @@ _UNITYRLOUTPUT_AGENTINFOSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=307,
-  serialized_end=412,
+  serialized_start=374,
+  serialized_end=479,
+)
+
+_UNITYRLOUTPUT_METRICSENTRY = _descriptor.Descriptor(
+  name='MetricsEntry',
+  full_name='communicator_objects.UnityRLOutput.MetricsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='communicator_objects.UnityRLOutput.MetricsEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='communicator_objects.UnityRLOutput.MetricsEntry.value', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=481,
+  serialized_end=527,
 )
 
 _UNITYRLOUTPUT = _descriptor.Descriptor(
@@ -108,10 +145,17 @@ _UNITYRLOUTPUT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='metrics', full_name='communicator_objects.UnityRLOutput.metrics', index=1,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_UNITYRLOUTPUT_LISTAGENTINFOPROTO, _UNITYRLOUTPUT_AGENTINFOSENTRY, ],
+  nested_types=[_UNITYRLOUTPUT_LISTAGENTINFOPROTO, _UNITYRLOUTPUT_AGENTINFOSENTRY, _UNITYRLOUTPUT_METRICSENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -121,14 +165,16 @@ _UNITYRLOUTPUT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=142,
-  serialized_end=418,
+  serialized_end=533,
 )
 
 _UNITYRLOUTPUT_LISTAGENTINFOPROTO.fields_by_name['value'].message_type = mlagents_dot_envs_dot_communicator__objects_dot_agent__info__proto__pb2._AGENTINFOPROTO
 _UNITYRLOUTPUT_LISTAGENTINFOPROTO.containing_type = _UNITYRLOUTPUT
 _UNITYRLOUTPUT_AGENTINFOSENTRY.fields_by_name['value'].message_type = _UNITYRLOUTPUT_LISTAGENTINFOPROTO
 _UNITYRLOUTPUT_AGENTINFOSENTRY.containing_type = _UNITYRLOUTPUT
+_UNITYRLOUTPUT_METRICSENTRY.containing_type = _UNITYRLOUTPUT
 _UNITYRLOUTPUT.fields_by_name['agentInfos'].message_type = _UNITYRLOUTPUT_AGENTINFOSENTRY
+_UNITYRLOUTPUT.fields_by_name['metrics'].message_type = _UNITYRLOUTPUT_METRICSENTRY
 DESCRIPTOR.message_types_by_name['UnityRLOutput'] = _UNITYRLOUTPUT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -147,6 +193,13 @@ UnityRLOutput = _reflection.GeneratedProtocolMessageType('UnityRLOutput', (_mess
     # @@protoc_insertion_point(class_scope:communicator_objects.UnityRLOutput.AgentInfosEntry)
     ))
   ,
+
+  MetricsEntry = _reflection.GeneratedProtocolMessageType('MetricsEntry', (_message.Message,), dict(
+    DESCRIPTOR = _UNITYRLOUTPUT_METRICSENTRY,
+    __module__ = 'mlagents.envs.communicator_objects.unity_rl_output_pb2'
+    # @@protoc_insertion_point(class_scope:communicator_objects.UnityRLOutput.MetricsEntry)
+    ))
+  ,
   DESCRIPTOR = _UNITYRLOUTPUT,
   __module__ = 'mlagents.envs.communicator_objects.unity_rl_output_pb2'
   # @@protoc_insertion_point(class_scope:communicator_objects.UnityRLOutput)
@@ -154,8 +207,10 @@ UnityRLOutput = _reflection.GeneratedProtocolMessageType('UnityRLOutput', (_mess
 _sym_db.RegisterMessage(UnityRLOutput)
 _sym_db.RegisterMessage(UnityRLOutput.ListAgentInfoProto)
 _sym_db.RegisterMessage(UnityRLOutput.AgentInfosEntry)
+_sym_db.RegisterMessage(UnityRLOutput.MetricsEntry)
 
 
 DESCRIPTOR._options = None
 _UNITYRLOUTPUT_AGENTINFOSENTRY._options = None
+_UNITYRLOUTPUT_METRICSENTRY._options = None
 # @@protoc_insertion_point(module_scope)
