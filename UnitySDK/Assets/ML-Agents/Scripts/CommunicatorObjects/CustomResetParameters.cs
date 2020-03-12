@@ -25,16 +25,16 @@ namespace MLAgents.CommunicatorObjects {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CkBtbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL2N1c3RvbV9y",
-            "ZXNldF9wYXJhbWV0ZXJzLnByb3RvEhRjb21tdW5pY2F0b3Jfb2JqZWN0cyKb",
-            "AQoVQ3VzdG9tUmVzZXRQYXJhbWV0ZXJzEk8KCnByb3BlcnRpZXMYASADKAsy",
-            "Oy5jb21tdW5pY2F0b3Jfb2JqZWN0cy5DdXN0b21SZXNldFBhcmFtZXRlcnMu",
-            "UHJvcGVydGllc0VudHJ5GjEKD1Byb3BlcnRpZXNFbnRyeRILCgNrZXkYASAB",
-            "KAkSDQoFdmFsdWUYAiABKAk6AjgBQh+qAhxNTEFnZW50cy5Db21tdW5pY2F0",
-            "b3JPYmplY3RzYgZwcm90bzM="));
+            "ZXNldF9wYXJhbWV0ZXJzLnByb3RvEhRjb21tdW5pY2F0b3Jfb2JqZWN0cyKp",
+            "AQoVQ3VzdG9tUmVzZXRQYXJhbWV0ZXJzEgwKBHNlZWQYASABKAUSTwoKcHJv",
+            "cGVydGllcxgCIAMoCzI7LmNvbW11bmljYXRvcl9vYmplY3RzLkN1c3RvbVJl",
+            "c2V0UGFyYW1ldGVycy5Qcm9wZXJ0aWVzRW50cnkaMQoPUHJvcGVydGllc0Vu",
+            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAFCH6oCHE1MQWdl",
+            "bnRzLkNvbW11bmljYXRvck9iamVjdHNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.CustomResetParameters), global::MLAgents.CommunicatorObjects.CustomResetParameters.Parser, new[]{ "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.CustomResetParameters), global::MLAgents.CommunicatorObjects.CustomResetParameters.Parser, new[]{ "Seed", "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -66,6 +66,7 @@ namespace MLAgents.CommunicatorObjects {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CustomResetParameters(CustomResetParameters other) : this() {
+      seed_ = other.seed_;
       properties_ = other.properties_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -75,10 +76,21 @@ namespace MLAgents.CommunicatorObjects {
       return new CustomResetParameters(this);
     }
 
+    /// <summary>Field number for the "seed" field.</summary>
+    public const int SeedFieldNumber = 1;
+    private int seed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Seed {
+      get { return seed_; }
+      set {
+        seed_ = value;
+      }
+    }
+
     /// <summary>Field number for the "properties" field.</summary>
-    public const int PropertiesFieldNumber = 1;
+    public const int PropertiesFieldNumber = 2;
     private static readonly pbc::MapField<string, string>.Codec _map_properties_codec
-        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 10);
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 18);
     private readonly pbc::MapField<string, string> properties_ = new pbc::MapField<string, string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::MapField<string, string> Properties {
@@ -98,6 +110,7 @@ namespace MLAgents.CommunicatorObjects {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Seed != other.Seed) return false;
       if (!Properties.Equals(other.Properties)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -105,6 +118,7 @@ namespace MLAgents.CommunicatorObjects {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Seed != 0) hash ^= Seed.GetHashCode();
       hash ^= Properties.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -119,6 +133,10 @@ namespace MLAgents.CommunicatorObjects {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Seed != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Seed);
+      }
       properties_.WriteTo(output, _map_properties_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -128,6 +146,9 @@ namespace MLAgents.CommunicatorObjects {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Seed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seed);
+      }
       size += properties_.CalculateSize(_map_properties_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -139,6 +160,9 @@ namespace MLAgents.CommunicatorObjects {
     public void MergeFrom(CustomResetParameters other) {
       if (other == null) {
         return;
+      }
+      if (other.Seed != 0) {
+        Seed = other.Seed;
       }
       properties_.Add(other.properties_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -152,7 +176,11 @@ namespace MLAgents.CommunicatorObjects {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            Seed = input.ReadInt32();
+            break;
+          }
+          case 18: {
             properties_.AddEntriesFrom(input, _map_properties_codec);
             break;
           }

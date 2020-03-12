@@ -11,4 +11,6 @@ message AgentActionProto {
     repeated float memories = 3;
     float value = 4;
     CustomAction custom_action = 5;
+
+    string debug = 6;
 }

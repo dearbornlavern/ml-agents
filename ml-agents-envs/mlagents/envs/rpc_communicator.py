@@ -106,6 +106,8 @@ class RpcCommunicator(Communicator):
         message = UnityMessage()
         message.header.status = 200
         message.unity_input.CopyFrom(inputs)
+        if self.unity_to_external.parent_conn.closed:
+            return None
         self.unity_to_external.parent_conn.send(message)
         output = self.unity_to_external.parent_conn.recv()
         if output.header.status != 200:

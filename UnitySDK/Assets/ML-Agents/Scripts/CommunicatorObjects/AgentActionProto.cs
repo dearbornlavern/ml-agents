@@ -27,15 +27,15 @@ namespace MLAgents.CommunicatorObjects {
             "CjttbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL2FnZW50X2Fj",
             "dGlvbl9wcm90by5wcm90bxIUY29tbXVuaWNhdG9yX29iamVjdHMaNm1sYWdl",
             "bnRzL2VudnMvY29tbXVuaWNhdG9yX29iamVjdHMvY3VzdG9tX2FjdGlvbi5w",
-            "cm90byKcAQoQQWdlbnRBY3Rpb25Qcm90bxIWCg52ZWN0b3JfYWN0aW9ucxgB",
+            "cm90byKrAQoQQWdlbnRBY3Rpb25Qcm90bxIWCg52ZWN0b3JfYWN0aW9ucxgB",
             "IAMoAhIUCgx0ZXh0X2FjdGlvbnMYAiABKAkSEAoIbWVtb3JpZXMYAyADKAIS",
             "DQoFdmFsdWUYBCABKAISOQoNY3VzdG9tX2FjdGlvbhgFIAEoCzIiLmNvbW11",
-            "bmljYXRvcl9vYmplY3RzLkN1c3RvbUFjdGlvbkIfqgIcTUxBZ2VudHMuQ29t",
-            "bXVuaWNhdG9yT2JqZWN0c2IGcHJvdG8z"));
+            "bmljYXRvcl9vYmplY3RzLkN1c3RvbUFjdGlvbhINCgVkZWJ1ZxgGIAEoCUIf",
+            "qgIcTUxBZ2VudHMuQ29tbXVuaWNhdG9yT2JqZWN0c2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MLAgents.CommunicatorObjects.CustomActionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.AgentActionProto), global::MLAgents.CommunicatorObjects.AgentActionProto.Parser, new[]{ "VectorActions", "TextActions", "Memories", "Value", "CustomAction" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.AgentActionProto), global::MLAgents.CommunicatorObjects.AgentActionProto.Parser, new[]{ "VectorActions", "TextActions", "Memories", "Value", "CustomAction", "Debug" }, null, null, null)
           }));
     }
     #endregion
@@ -72,6 +72,7 @@ namespace MLAgents.CommunicatorObjects {
       memories_ = other.memories_.Clone();
       value_ = other.value_;
       customAction_ = other.customAction_ != null ? other.customAction_.Clone() : null;
+      debug_ = other.debug_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -133,6 +134,17 @@ namespace MLAgents.CommunicatorObjects {
       }
     }
 
+    /// <summary>Field number for the "debug" field.</summary>
+    public const int DebugFieldNumber = 6;
+    private string debug_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Debug {
+      get { return debug_; }
+      set {
+        debug_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as AgentActionProto);
@@ -151,6 +163,7 @@ namespace MLAgents.CommunicatorObjects {
       if(!memories_.Equals(other.memories_)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Value, other.Value)) return false;
       if (!object.Equals(CustomAction, other.CustomAction)) return false;
+      if (Debug != other.Debug) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -162,6 +175,7 @@ namespace MLAgents.CommunicatorObjects {
       hash ^= memories_.GetHashCode();
       if (Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Value);
       if (customAction_ != null) hash ^= CustomAction.GetHashCode();
+      if (Debug.Length != 0) hash ^= Debug.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -189,6 +203,10 @@ namespace MLAgents.CommunicatorObjects {
         output.WriteRawTag(42);
         output.WriteMessage(CustomAction);
       }
+      if (Debug.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Debug);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -207,6 +225,9 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (customAction_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CustomAction);
+      }
+      if (Debug.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Debug);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,6 +253,9 @@ namespace MLAgents.CommunicatorObjects {
           customAction_ = new global::MLAgents.CommunicatorObjects.CustomAction();
         }
         CustomAction.MergeFrom(other.CustomAction);
+      }
+      if (other.Debug.Length != 0) {
+        Debug = other.Debug;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -267,6 +291,10 @@ namespace MLAgents.CommunicatorObjects {
               customAction_ = new global::MLAgents.CommunicatorObjects.CustomAction();
             }
             input.ReadMessage(customAction_);
+            break;
+          }
+          case 50: {
+            Debug = input.ReadString();
             break;
           }
         }

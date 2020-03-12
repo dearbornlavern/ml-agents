@@ -3,6 +3,7 @@ import glob
 import logging
 import numpy as np
 import os
+import json
 import subprocess
 from typing import Dict, List, Optional, Any
 
@@ -88,6 +89,7 @@ class UnityEnvironment(BaseUnityEnvironment):
         self.worker_id = worker_id
         self.log_file = log_file
         self.random_state = None
+        self.agent_debug = None
 
         # If the environment name is None, a new environment will not be launched
         # and the communicator will directly try to connect to an existing unity environment.
@@ -660,6 +662,7 @@ class UnityEnvironment(BaseUnityEnvironment):
         custom_action: Dict[str, list],
     ) -> UnityInput:
         rl_in = UnityRLInput()
+        agent_i = 0
         for b in vector_action:
             n_agents = self._n_agents[b]
             if n_agents == 0:
@@ -676,8 +679,20 @@ class UnityEnvironment(BaseUnityEnvironment):
                 if b in value:
                     if value[b] is not None:
                         action.value = float(value[b][i])
+
+                if self.agent_debug is not None and len(self.agent_debug) > i:
+                    agent_debug = self.agent_debug[agent_i]
+
+                    class NDArrayEncoder(json.JSONEncoder):
+                        def default(self, obj):
+                            if isinstance(obj, np.ndarray):
+                                return obj.tolist()
+                            return json.JSONEncoder.default(self, obj)
+                    action.debug = json.dumps(agent_debug, cls=NDArrayEncoder, indent=4)
+
                 rl_in.agent_actions[b].value.extend([action])
                 rl_in.command = 0
+                agent_i += 1
         return self.wrap_unity_input(rl_in)
 
     def _generate_reset_input(
@@ -694,6 +709,9 @@ class UnityEnvironment(BaseUnityEnvironment):
             )
         rl_in.command = 1
         return self.wrap_unity_input(rl_in)
+
+    def set_agent_debug(self, agent_debug):
+        self.agent_debug = agent_debug
 
     def send_academy_parameters(
         self, init_parameters: UnityRLInitializationInput
