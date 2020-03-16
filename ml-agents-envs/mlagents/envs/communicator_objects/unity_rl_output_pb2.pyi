@@ -2,10 +2,12 @@
 import sys
 from google.protobuf.descriptor import (
     Descriptor as google___protobuf___descriptor___Descriptor,
+    EnumDescriptor as google___protobuf___descriptor___EnumDescriptor,
 )
 
 from google.protobuf.internal.containers import (
     RepeatedCompositeFieldContainer as google___protobuf___internal___containers___RepeatedCompositeFieldContainer,
+    RepeatedScalarFieldContainer as google___protobuf___internal___containers___RepeatedScalarFieldContainer,
 )
 
 from google.protobuf.message import (
@@ -18,10 +20,13 @@ from mlagents.envs.communicator_objects.agent_info_proto_pb2 import (
 
 from typing import (
     Iterable as typing___Iterable,
+    List as typing___List,
     Mapping as typing___Mapping,
     MutableMapping as typing___MutableMapping,
     Optional as typing___Optional,
     Text as typing___Text,
+    Tuple as typing___Tuple,
+    cast as typing___cast,
 )
 
 from typing_extensions import (
@@ -33,6 +38,7 @@ builtin___bool = bool
 builtin___bytes = bytes
 builtin___float = float
 builtin___int = int
+builtin___str = str
 
 
 class UnityRLOutput(google___protobuf___message___Message):
@@ -55,6 +61,46 @@ class UnityRLOutput(google___protobuf___message___Message):
             def ClearField(self, field_name: typing_extensions___Literal[u"value"]) -> None: ...
         else:
             def ClearField(self, field_name: typing_extensions___Literal[u"value",b"value"]) -> None: ...
+
+    class Metric(google___protobuf___message___Message):
+        DESCRIPTOR: google___protobuf___descriptor___Descriptor = ...
+        class MetricType(builtin___int):
+            DESCRIPTOR: google___protobuf___descriptor___EnumDescriptor = ...
+            @classmethod
+            def Name(cls, number: builtin___int) -> builtin___str: ...
+            @classmethod
+            def Value(cls, name: builtin___str) -> 'UnityRLOutput.Metric.MetricType': ...
+            @classmethod
+            def keys(cls) -> typing___List[builtin___str]: ...
+            @classmethod
+            def values(cls) -> typing___List['UnityRLOutput.Metric.MetricType']: ...
+            @classmethod
+            def items(cls) -> typing___List[typing___Tuple[builtin___str, 'UnityRLOutput.Metric.MetricType']]: ...
+            SCALAR = typing___cast('UnityRLOutput.Metric.MetricType', 0)
+            HISTOGRAM = typing___cast('UnityRLOutput.Metric.MetricType', 1)
+            IMAGE = typing___cast('UnityRLOutput.Metric.MetricType', 2)
+            TEXT = typing___cast('UnityRLOutput.Metric.MetricType', 3)
+        SCALAR = typing___cast('UnityRLOutput.Metric.MetricType', 0)
+        HISTOGRAM = typing___cast('UnityRLOutput.Metric.MetricType', 1)
+        IMAGE = typing___cast('UnityRLOutput.Metric.MetricType', 2)
+        TEXT = typing___cast('UnityRLOutput.Metric.MetricType', 3)
+
+        type = ... # type: UnityRLOutput.Metric.MetricType
+        values = ... # type: google___protobuf___internal___containers___RepeatedScalarFieldContainer[builtin___float]
+
+        def __init__(self,
+            *,
+            type : typing___Optional[UnityRLOutput.Metric.MetricType] = None,
+            values : typing___Optional[typing___Iterable[builtin___float]] = None,
+            ) -> None: ...
+        @classmethod
+        def FromString(cls, s: builtin___bytes) -> UnityRLOutput.Metric: ...
+        def MergeFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
+        def CopyFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
+        if sys.version_info >= (3,):
+            def ClearField(self, field_name: typing_extensions___Literal[u"type",u"values"]) -> None: ...
+        else:
+            def ClearField(self, field_name: typing_extensions___Literal[u"type",b"type",u"values",b"values"]) -> None: ...
 
     class AgentInfosEntry(google___protobuf___message___Message):
         DESCRIPTOR: google___protobuf___descriptor___Descriptor = ...
@@ -82,20 +128,24 @@ class UnityRLOutput(google___protobuf___message___Message):
     class MetricsEntry(google___protobuf___message___Message):
         DESCRIPTOR: google___protobuf___descriptor___Descriptor = ...
         key = ... # type: typing___Text
-        value = ... # type: builtin___float
+
+        @property
+        def value(self) -> UnityRLOutput.Metric: ...
 
         def __init__(self,
             *,
             key : typing___Optional[typing___Text] = None,
-            value : typing___Optional[builtin___float] = None,
+            value : typing___Optional[UnityRLOutput.Metric] = None,
             ) -> None: ...
         @classmethod
         def FromString(cls, s: builtin___bytes) -> UnityRLOutput.MetricsEntry: ...
         def MergeFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
         def CopyFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
         if sys.version_info >= (3,):
+            def HasField(self, field_name: typing_extensions___Literal[u"value"]) -> builtin___bool: ...
             def ClearField(self, field_name: typing_extensions___Literal[u"key",u"value"]) -> None: ...
         else:
+            def HasField(self, field_name: typing_extensions___Literal[u"value",b"value"]) -> builtin___bool: ...
             def ClearField(self, field_name: typing_extensions___Literal[u"key",b"key",u"value",b"value"]) -> None: ...
 
 
@@ -103,12 +153,12 @@ class UnityRLOutput(google___protobuf___message___Message):
     def agentInfos(self) -> typing___MutableMapping[typing___Text, UnityRLOutput.ListAgentInfoProto]: ...
 
     @property
-    def metrics(self) -> typing___MutableMapping[typing___Text, builtin___float]: ...
+    def metrics(self) -> typing___MutableMapping[typing___Text, UnityRLOutput.Metric]: ...
 
     def __init__(self,
         *,
         agentInfos : typing___Optional[typing___Mapping[typing___Text, UnityRLOutput.ListAgentInfoProto]] = None,
-        metrics : typing___Optional[typing___Mapping[typing___Text, builtin___float]] = None,
+        metrics : typing___Optional[typing___Mapping[typing___Text, UnityRLOutput.Metric]] = None,
         ) -> None: ...
     @classmethod
     def FromString(cls, s: builtin___bytes) -> UnityRLOutput: ...

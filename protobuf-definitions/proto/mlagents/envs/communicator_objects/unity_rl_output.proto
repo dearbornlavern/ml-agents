@@ -9,8 +9,18 @@ message UnityRLOutput {
     message ListAgentInfoProto {
         repeated AgentInfoProto value = 1;
     }
+    message Metric {
+        enum MetricType {
+            SCALAR = 0;
+            HISTOGRAM = 1;
+            IMAGE = 2;
+            TEXT = 3;
+        }
+        MetricType type = 1;
+        repeated float values = 2;
+    }
     reserved 1; // deprecated bool global_done field
     map<string, ListAgentInfoProto> agentInfos = 2;
-    map<string, float> metrics = 3;
+    map<string, Metric> metrics = 3;
 }
 

@@ -4,11 +4,16 @@ from google.protobuf.descriptor import (
     Descriptor as google___protobuf___descriptor___Descriptor,
 )
 
+from google.protobuf.internal.containers import (
+    RepeatedScalarFieldContainer as google___protobuf___internal___containers___RepeatedScalarFieldContainer,
+)
+
 from google.protobuf.message import (
     Message as google___protobuf___message___Message,
 )
 
 from typing import (
+    Iterable as typing___Iterable,
     Mapping as typing___Mapping,
     MutableMapping as typing___MutableMapping,
     Optional as typing___Optional,
@@ -48,6 +53,7 @@ class CustomResetParameters(google___protobuf___message___Message):
             def ClearField(self, field_name: typing_extensions___Literal[u"key",b"key",u"value",b"value"]) -> None: ...
 
     seed = ... # type: builtin___int
+    encoding = ... # type: google___protobuf___internal___containers___RepeatedScalarFieldContainer[builtin___float]
 
     @property
     def properties(self) -> typing___MutableMapping[typing___Text, typing___Text]: ...
@@ -56,12 +62,13 @@ class CustomResetParameters(google___protobuf___message___Message):
         *,
         seed : typing___Optional[builtin___int] = None,
         properties : typing___Optional[typing___Mapping[typing___Text, typing___Text]] = None,
+        encoding : typing___Optional[typing___Iterable[builtin___float]] = None,
         ) -> None: ...
     @classmethod
     def FromString(cls, s: builtin___bytes) -> CustomResetParameters: ...
     def MergeFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
     def CopyFrom(self, other_msg: google___protobuf___message___Message) -> None: ...
     if sys.version_info >= (3,):
-        def ClearField(self, field_name: typing_extensions___Literal[u"properties",u"seed"]) -> None: ...
+        def ClearField(self, field_name: typing_extensions___Literal[u"encoding",u"properties",u"seed"]) -> None: ...
     else:
-        def ClearField(self, field_name: typing_extensions___Literal[u"properties",b"properties",u"seed",b"seed"]) -> None: ...
+        def ClearField(self, field_name: typing_extensions___Literal[u"encoding",b"encoding",u"properties",b"properties",u"seed",b"seed"]) -> None: ...

@@ -25,16 +25,17 @@ namespace MLAgents.CommunicatorObjects {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CkBtbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL2N1c3RvbV9y",
-            "ZXNldF9wYXJhbWV0ZXJzLnByb3RvEhRjb21tdW5pY2F0b3Jfb2JqZWN0cyKp",
+            "ZXNldF9wYXJhbWV0ZXJzLnByb3RvEhRjb21tdW5pY2F0b3Jfb2JqZWN0cyK7",
             "AQoVQ3VzdG9tUmVzZXRQYXJhbWV0ZXJzEgwKBHNlZWQYASABKAUSTwoKcHJv",
             "cGVydGllcxgCIAMoCzI7LmNvbW11bmljYXRvcl9vYmplY3RzLkN1c3RvbVJl",
-            "c2V0UGFyYW1ldGVycy5Qcm9wZXJ0aWVzRW50cnkaMQoPUHJvcGVydGllc0Vu",
-            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAFCH6oCHE1MQWdl",
-            "bnRzLkNvbW11bmljYXRvck9iamVjdHNiBnByb3RvMw=="));
+            "c2V0UGFyYW1ldGVycy5Qcm9wZXJ0aWVzRW50cnkSEAoIZW5jb2RpbmcYAyAD",
+            "KAIaMQoPUHJvcGVydGllc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
+            "IAEoCToCOAFCH6oCHE1MQWdlbnRzLkNvbW11bmljYXRvck9iamVjdHNiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.CustomResetParameters), global::MLAgents.CommunicatorObjects.CustomResetParameters.Parser, new[]{ "Seed", "Properties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.CustomResetParameters), global::MLAgents.CommunicatorObjects.CustomResetParameters.Parser, new[]{ "Seed", "Properties", "Encoding" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -68,6 +69,7 @@ namespace MLAgents.CommunicatorObjects {
     public CustomResetParameters(CustomResetParameters other) : this() {
       seed_ = other.seed_;
       properties_ = other.properties_.Clone();
+      encoding_ = other.encoding_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -97,6 +99,16 @@ namespace MLAgents.CommunicatorObjects {
       get { return properties_; }
     }
 
+    /// <summary>Field number for the "encoding" field.</summary>
+    public const int EncodingFieldNumber = 3;
+    private static readonly pb::FieldCodec<float> _repeated_encoding_codec
+        = pb::FieldCodec.ForFloat(26);
+    private readonly pbc::RepeatedField<float> encoding_ = new pbc::RepeatedField<float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<float> Encoding {
+      get { return encoding_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as CustomResetParameters);
@@ -112,6 +124,7 @@ namespace MLAgents.CommunicatorObjects {
       }
       if (Seed != other.Seed) return false;
       if (!Properties.Equals(other.Properties)) return false;
+      if(!encoding_.Equals(other.encoding_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -120,6 +133,7 @@ namespace MLAgents.CommunicatorObjects {
       int hash = 1;
       if (Seed != 0) hash ^= Seed.GetHashCode();
       hash ^= Properties.GetHashCode();
+      hash ^= encoding_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -138,6 +152,7 @@ namespace MLAgents.CommunicatorObjects {
         output.WriteInt32(Seed);
       }
       properties_.WriteTo(output, _map_properties_codec);
+      encoding_.WriteTo(output, _repeated_encoding_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -150,6 +165,7 @@ namespace MLAgents.CommunicatorObjects {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seed);
       }
       size += properties_.CalculateSize(_map_properties_codec);
+      size += encoding_.CalculateSize(_repeated_encoding_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -165,6 +181,7 @@ namespace MLAgents.CommunicatorObjects {
         Seed = other.Seed;
       }
       properties_.Add(other.properties_);
+      encoding_.Add(other.encoding_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -182,6 +199,11 @@ namespace MLAgents.CommunicatorObjects {
           }
           case 18: {
             properties_.AddEntriesFrom(input, _map_properties_codec);
+            break;
+          }
+          case 26:
+          case 29: {
+            encoding_.AddEntriesFrom(input, _repeated_encoding_codec);
             break;
           }
         }

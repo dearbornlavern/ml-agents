@@ -6,4 +6,5 @@ package communicator_objects;
 message CustomResetParameters {
     int32 seed = 1;
     map<string, string> properties = 2;
+    repeated float encoding = 3;
 }

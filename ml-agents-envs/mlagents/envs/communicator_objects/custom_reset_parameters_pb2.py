@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='communicator_objects',
   syntax='proto3',
   serialized_options=_b('\252\002\034MLAgents.CommunicatorObjects'),
-  serialized_pb=_b('\n@mlagents/envs/communicator_objects/custom_reset_parameters.proto\x12\x14\x63ommunicator_objects\"\xa9\x01\n\x15\x43ustomResetParameters\x12\x0c\n\x04seed\x18\x01 \x01(\x05\x12O\n\nproperties\x18\x02 \x03(\x0b\x32;.communicator_objects.CustomResetParameters.PropertiesEntry\x1a\x31\n\x0fPropertiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
+  serialized_pb=_b('\n@mlagents/envs/communicator_objects/custom_reset_parameters.proto\x12\x14\x63ommunicator_objects\"\xbb\x01\n\x15\x43ustomResetParameters\x12\x0c\n\x04seed\x18\x01 \x01(\x05\x12O\n\nproperties\x18\x02 \x03(\x0b\x32;.communicator_objects.CustomResetParameters.PropertiesEntry\x12\x10\n\x08\x65ncoding\x18\x03 \x03(\x02\x1a\x31\n\x0fPropertiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x1f\xaa\x02\x1cMLAgents.CommunicatorObjectsb\x06proto3')
 )
 
 
@@ -58,8 +58,8 @@ _CUSTOMRESETPARAMETERS_PROPERTIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=211,
-  serialized_end=260,
+  serialized_start=229,
+  serialized_end=278,
 )
 
 _CUSTOMRESETPARAMETERS = _descriptor.Descriptor(
@@ -83,6 +83,13 @@ _CUSTOMRESETPARAMETERS = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='encoding', full_name='communicator_objects.CustomResetParameters.encoding', index=2,
+      number=3, type=2, cpp_type=6, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -96,7 +103,7 @@ _CUSTOMRESETPARAMETERS = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=91,
-  serialized_end=260,
+  serialized_end=278,
 )
 
 _CUSTOMRESETPARAMETERS_PROPERTIESENTRY.containing_type = _CUSTOMRESETPARAMETERS

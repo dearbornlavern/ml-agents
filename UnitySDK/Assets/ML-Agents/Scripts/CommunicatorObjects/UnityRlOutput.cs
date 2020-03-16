@@ -27,20 +27,26 @@ namespace MLAgents.CommunicatorObjects {
             "CjhtbGFnZW50cy9lbnZzL2NvbW11bmljYXRvcl9vYmplY3RzL3VuaXR5X3Js",
             "X291dHB1dC5wcm90bxIUY29tbXVuaWNhdG9yX29iamVjdHMaOW1sYWdlbnRz",
             "L2VudnMvY29tbXVuaWNhdG9yX29iamVjdHMvYWdlbnRfaW5mb19wcm90by5w",
-            "cm90byKHAwoNVW5pdHlSTE91dHB1dBJHCgphZ2VudEluZm9zGAIgAygLMjMu",
+            "cm90byLRBAoNVW5pdHlSTE91dHB1dBJHCgphZ2VudEluZm9zGAIgAygLMjMu",
             "Y29tbXVuaWNhdG9yX29iamVjdHMuVW5pdHlSTE91dHB1dC5BZ2VudEluZm9z",
             "RW50cnkSQQoHbWV0cmljcxgDIAMoCzIwLmNvbW11bmljYXRvcl9vYmplY3Rz",
             "LlVuaXR5UkxPdXRwdXQuTWV0cmljc0VudHJ5GkkKEkxpc3RBZ2VudEluZm9Q",
             "cm90bxIzCgV2YWx1ZRgBIAMoCzIkLmNvbW11bmljYXRvcl9vYmplY3RzLkFn",
-            "ZW50SW5mb1Byb3RvGmkKD0FnZW50SW5mb3NFbnRyeRILCgNrZXkYASABKAkS",
-            "RQoFdmFsdWUYAiABKAsyNi5jb21tdW5pY2F0b3Jfb2JqZWN0cy5Vbml0eVJM",
-            "T3V0cHV0Lkxpc3RBZ2VudEluZm9Qcm90bzoCOAEaLgoMTWV0cmljc0VudHJ5",
-            "EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoAjoCOAFKBAgBEAJCH6oCHE1M",
-            "QWdlbnRzLkNvbW11bmljYXRvck9iamVjdHNiBnByb3RvMw=="));
+            "ZW50SW5mb1Byb3RvGpsBCgZNZXRyaWMSQwoEdHlwZRgBIAEoDjI1LmNvbW11",
+            "bmljYXRvcl9vYmplY3RzLlVuaXR5UkxPdXRwdXQuTWV0cmljLk1ldHJpY1R5",
+            "cGUSDgoGdmFsdWVzGAIgAygCIjwKCk1ldHJpY1R5cGUSCgoGU0NBTEFSEAAS",
+            "DQoJSElTVE9HUkFNEAESCQoFSU1BR0UQAhIICgRURVhUEAMaaQoPQWdlbnRJ",
+            "bmZvc0VudHJ5EgsKA2tleRgBIAEoCRJFCgV2YWx1ZRgCIAEoCzI2LmNvbW11",
+            "bmljYXRvcl9vYmplY3RzLlVuaXR5UkxPdXRwdXQuTGlzdEFnZW50SW5mb1By",
+            "b3RvOgI4ARpaCgxNZXRyaWNzRW50cnkSCwoDa2V5GAEgASgJEjkKBXZhbHVl",
+            "GAIgASgLMiouY29tbXVuaWNhdG9yX29iamVjdHMuVW5pdHlSTE91dHB1dC5N",
+            "ZXRyaWM6AjgBSgQIARACQh+qAhxNTEFnZW50cy5Db21tdW5pY2F0b3JPYmpl",
+            "Y3RzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::MLAgents.CommunicatorObjects.AgentInfoProtoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityRLOutput), global::MLAgents.CommunicatorObjects.UnityRLOutput.Parser, new[]{ "AgentInfos", "Metrics" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.ListAgentInfoProto), global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.ListAgentInfoProto.Parser, new[]{ "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric), global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric.Parser, new[]{ "Type", "Values" }, null, new[]{ typeof(global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric.Types.MetricType) }, null),
             null, null, })
           }));
     }
@@ -95,11 +101,11 @@ namespace MLAgents.CommunicatorObjects {
 
     /// <summary>Field number for the "metrics" field.</summary>
     public const int MetricsFieldNumber = 3;
-    private static readonly pbc::MapField<string, float>.Codec _map_metrics_codec
-        = new pbc::MapField<string, float>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForFloat(21), 26);
-    private readonly pbc::MapField<string, float> metrics_ = new pbc::MapField<string, float>();
+    private static readonly pbc::MapField<string, global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric>.Codec _map_metrics_codec
+        = new pbc::MapField<string, global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric.Parser), 26);
+    private readonly pbc::MapField<string, global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric> metrics_ = new pbc::MapField<string, global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::MapField<string, float> Metrics {
+    public pbc::MapField<string, global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric> Metrics {
       get { return metrics_; }
     }
 
@@ -309,6 +315,170 @@ namespace MLAgents.CommunicatorObjects {
             }
           }
         }
+
+      }
+
+      public sealed partial class Metric : pb::IMessage<Metric> {
+        private static readonly pb::MessageParser<Metric> _parser = new pb::MessageParser<Metric>(() => new Metric());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Metric> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::MLAgents.CommunicatorObjects.UnityRLOutput.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Metric() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Metric(Metric other) : this() {
+          type_ = other.type_;
+          values_ = other.values_.Clone();
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Metric Clone() {
+          return new Metric(this);
+        }
+
+        /// <summary>Field number for the "type" field.</summary>
+        public const int TypeFieldNumber = 1;
+        private global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric.Types.MetricType type_ = 0;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric.Types.MetricType Type {
+          get { return type_; }
+          set {
+            type_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "values" field.</summary>
+        public const int ValuesFieldNumber = 2;
+        private static readonly pb::FieldCodec<float> _repeated_values_codec
+            = pb::FieldCodec.ForFloat(18);
+        private readonly pbc::RepeatedField<float> values_ = new pbc::RepeatedField<float>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<float> Values {
+          get { return values_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Metric);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Metric other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Type != other.Type) return false;
+          if(!values_.Equals(other.values_)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Type != 0) hash ^= Type.GetHashCode();
+          hash ^= values_.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Type != 0) {
+            output.WriteRawTag(8);
+            output.WriteEnum((int) Type);
+          }
+          values_.WriteTo(output, _repeated_values_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Type != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+          }
+          size += values_.CalculateSize(_repeated_values_codec);
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Metric other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Type != 0) {
+            Type = other.Type;
+          }
+          values_.Add(other.values_);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                type_ = (global::MLAgents.CommunicatorObjects.UnityRLOutput.Types.Metric.Types.MetricType) input.ReadEnum();
+                break;
+              }
+              case 18:
+              case 21: {
+                values_.AddEntriesFrom(input, _repeated_values_codec);
+                break;
+              }
+            }
+          }
+        }
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the Metric message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static partial class Types {
+          public enum MetricType {
+            [pbr::OriginalName("SCALAR")] Scalar = 0,
+            [pbr::OriginalName("HISTOGRAM")] Histogram = 1,
+            [pbr::OriginalName("IMAGE")] Image = 2,
+            [pbr::OriginalName("TEXT")] Text = 3,
+          }
+
+        }
+        #endregion
 
       }
 
